@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: default
+html: true
 paginate: true
 
 ---
@@ -19,9 +20,11 @@ h1 {
 
 <!-- _class: invert -->
 
+<!-- _paginate: false -->
+
 # IPv6 Addressing
 
-<!-- _footer: "**Author:** Pedro Durán" -->
+<!-- _footer: Pedro Durán -->
 
 ---
 
@@ -32,6 +35,8 @@ All RIRs (Regional Internet Registries) have exhausted their address pools, exce
 
 - **Enhancements over IPv4**
 The development of IPv6 also included fixes for IPv4 limitations and other enhancements, with subnetting in mind.
+
+<!-- We can make comments during our presentation which will be shown in the presenter tool -->
 
 ---
 

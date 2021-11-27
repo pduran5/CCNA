@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: default
+html: true
 paginate: true
 
 ---
@@ -19,9 +20,11 @@ h1 {
 
 <!-- _class: invert -->
 
+<!-- _paginate: false -->
+
 # ICMP
 
-<!-- _footer: "**Author:** Pedro Durán" -->
+<!-- _footer: "Pedro Durán" -->
 
 ---
 
