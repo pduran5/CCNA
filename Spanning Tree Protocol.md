@@ -169,7 +169,7 @@ S1(config-if)# spanning-tree cost 25
 
 ![w:1100 center](img/lowersenderportpriority.png)
 
-> S4: Root Port is F0/6, because S1 F0/1 has a lower sender BID than S1 F0/2
+> S4: Root Port is F0/6, because S1 F0/1 has a lower sender Port ID than S1 F0/2
 > Same cost > Same sender BID > Same Port Priority > Different Sender Port ID
 
 ---
