@@ -60,7 +60,7 @@ h1 {
   - **Bridge Priority = 32768** (default). Range: 0...61440 (increments of 4096)
     - **⚠️ Can be changed to elect another root bridge**
   - **VLAN ID = Extended System ID**
-  - **Bridge ID = Switch Interface MAC Address**
+  - **Bridge ID = Switch MAC Address**
 
 > Example:
 > S1 BID: `32768.00A0.1101.V001`
