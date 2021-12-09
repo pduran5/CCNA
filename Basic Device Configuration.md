@@ -269,7 +269,3 @@ R1# show ip route
 R1# show ipv6 route
 R1# show history
 ```
-
----
-
-Test
