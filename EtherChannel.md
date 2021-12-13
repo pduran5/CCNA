@@ -30,15 +30,13 @@ h1 {
 
 # Link Aggregation
 
-**EtherChannel**: Link aggregation technology that groups multiple physical Ethernet links together into one single logical link. Provides:
-- Fault-tolerance
-- Load sharing
-- Increase bandwith
-- Redundancy between switches, routers and servers
+**EtherChannel**: Allows you to combine multiple physical interfaces into one logical interface, which increases performance while maintaining redundancy.
+ - Provides fault-tolerance, load sharing, increase bandwith and redundancy.
+ - Also known as Port Aggregation (PAgP), Link Aggregation (LACP), channel bonding, or multi-linking.
 
-**Port channel**: virtual interface that bundles together physical interfaces into one logical link.
+**Port channel**: Logical interface which operates at the speed of the combined physical interfaces.
 
-![bg 90% right:40%](img/etherchannel.png)
+![bg 85% right:30%](img/etherchannel.png)
 
 ---
 
@@ -57,25 +55,40 @@ h1 {
 # AutoNegation Protocols
 - **Port Aggregation Protocol (PAgP)**:
   - Cisco propietary. PAgP packets sent every 30 seconds. 
-  - All EtherChannel Ports: Same config (speed, duplex, VLAN info)
 - **Link Aggregation Control Protocol (LACP)**
-  - IEEE specification (802.3ad)
-  - Multivendor Environments
+  - IEEE specification (802.3ad). Multivendor environments
+
+# Configuration Guidelines both ends
+  - **Same EtherChannel support. Same speed and duplex**.
+  - **Same VLAN match** (all interfaces to same VLAN or as a trunk) and **Range of VLANs**.
 
 ---
 
-# PAgP-LACP Mode Settings
-
-![left](img/pagp.png)
+# <span style="color:blue">PAgP</span> - <span style="color:violet">LACP</span> Mode Settings
 
 | S1 | S2 | Channel Establishment |
-|----|----|-----------------------|
-| On | On | **<span style="color:green">Yes</span>** |
-| On | Desirable/Auto / Active/Passive | **<span style="color:red">No</span>** |
-| Desirable / Active | Desirable / Active | **<span style="color:green">Yes</span>** |
-| Desirable / Active | Auto / Passive | **<span style="color:green">Yes</span>**  |
-| Auto / Passive | Desirable / Active | **<span style="color:green">Yes</span>**  |
-| Auto / Passive | Auto / Passive | **<span style="color:red">No</span>** |
+|:--:|:--:|:---------------------:|
+| <span style="color:blue">On</span> - <span style="color:violet">On</span> | <span style="color:blue">On</span> - <span style="color:violet">On</span> | **<span style="color:green">Yes</span>** |
+| <span style="color:blue">On</span> - <span style="color:violet">On</span> | <span style="color:blue">Desirable/Auto</span> - <span style="color:violet">Active/Passive</span> | **<span style="color:red">No</span>** |
+| <span style="color:blue">Desirable</span> - <span style="color:violet">Active</span> | <span style="color:blue">Desirable</span> - <span style="color:violet">Active</span> | **<span style="color:green">Yes</span>** |
+| <span style="color:blue">Desirable</span> - <span style="color:violet">Active</span> | <span style="color:blue">Auto</span> - <span style="color:violet">Passive</span> | **<span style="color:green">Yes</span>**  |
+| <span style="color:blue">Auto</span> - <span style="color:violet">Passive</span> | <span style="color:blue">Desirable</span> - <span style="color:violet">Active</span> | **<span style="color:green">Yes</span>**  |
+| <span style="color:blue">Auto</span> - <span style="color:violet">Passive</span> | <span style="color:blue">Auto</span> - <span style="color:violet">Passive</span> | **<span style="color:red">No</span>** |
 
 ---
 
+# LACP Configuration Example
+
+```
+S1(config)# interface range f0/1-2
+S1(config-if-range)# channel-group 1 mode active
+S1(config-if-range)# port-channel interface Port-channel 1
+S1(config-if-range)# interface port-channel 1
+S1(config-if)# switchport mode trunk
+S1(config-if)# switchport trunk allowed vlan 1,2,20
+S1(config-if)# end
+S1# show interfaces port-channel
+S1# show etherchannel summary
+S1# show etherchannel port-channel
+S1# show interfaces etherchannel
+```
