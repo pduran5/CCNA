@@ -93,36 +93,84 @@ h1 {
 
 # MAC Address Table Flooding Attack
 
-![](img/macfloodingattack.png)
+- **Attacker bombards the switch with fake source MAC addresses** ➡ switch MAC address table full ➡ **switch floods all incoming traffic out all ports on the same VLAN** ➡ **attacker captures all of the frames sent from one host to another** on the local LAN or local VLAN.
+
+## Mitigation
+- **Implement port security.**
+
+![center](img/macfloodingattack.png)
 
 ---
 
 # VLAN Hopping Attacks
+- **Enables traffic from one VLAN to be seen by another VLAN without the aid of a router.**
+- The threat actor **configures a host to act like a switch** to take advantage of the automatic trunking port feature enabled by default on most switch ports ➡ **establishes a trunk** ➡ **can access all the VLANs on the switch.**
 
-![](img/vlanhopping.png)
+![center](img/vlanhopping.png)
 
 ---
 
 # VLAN Double-Tagging Attacks
 
+- **Attacker embeds a hidden 802.1Q tag inside the frame that already has an 802.1Q tag:**
+  - **1st 802.1 tag ➡ Native VLAN:** Switch forwards the packet out all native VLAN ports after stripping the VLAN tag ➡ Attacker must be in a native VLAN port.
+  - **2nd inner 802.1 tag** ➡ The second switch looks only at the inner 802.1Q tag ➡ frame is destined to the target VLAN.
+- **The attacker gets the ability to communicate with devices on the normally blocked VLAN.**
+
+## Mitigation
+- **Disable trunking on all access ports**, **disable auto trunking on trunk links** (if needed enabled manually) and be **sure that native VLAN is only used for trunks**.
+
+
 ---
 
 # DHCP Attacks
+- **DHCP Starvation Attack:** create a DoS for connecting clients. Attacking tools look at the entire scope of leasable IP addresses and try to lease them all.
 
+- **DHCP Spoofing Attack:** a rogue DHCP server is connected to the network and provides false IP configuration parameters to legimitate clients:
+  - **Wrong default gateway:** MiTM attack
+  - **Wrong DNS server:** points the user to a nefarious website.
+  - **Wrong IP address:** DoS attack on the DHCP client.
 ---
 
 # ARP Attacks
+
+- An attacker can send a gratuitous ARP message containing a spoofed MAC address to a switch, and the switch would update its MAC table accordingly.
+- **A threat actor sends unsolicited ARP Replies to other hosts on the subnet with the MAC Address of the threat actor and the IP address of the default gateway**, effectively setting up a **man-in-the-middle attack**.
+
+## Mitigation
+- **Implement Dynamic ARP Inspection (DAI).**
 
 ---
 
 # Address Spoofing Attacks
 
+- **IP address spoofing:** when a threat actor hijacks a valid IP address of another device on the subnet or uses a random IP address.
+- **MAC address spoofing:** when a threat actor alters the MAC address of their host to match another known MAC address of a target host.
+
+## Mitigation
+- **Implement IP Source Guard (IPSG).**
+
+
 ---
 
 # STP Attack
 
+Network attackers can manipulate the Spanning Tree Protocol to conduct an attack:
+- **Spoofing the Root Bridge:**
+  - **Attacker broadcasts BPDUs with lower bridge priority** to be elected as the **Root Bridge**
+  - Changing the topology of the network
+- Capturing all traffic for the immediate switched domain
+
+## Mitigation
+- **Implement BPDU Guard on all access ports.**
+
 ---
 
 # CDP Reconnaissance Attack
+- **CDP enabled by default** on all Cisco devices.
+- CDP information includes the IP address of the device, IOS software version, platform, capabilities and the native VLAN.
 
----
+## Mitigation
+- **Limit the use of CDP on devices or ports:**
+  - Disable CDP globally on a **device**: `no cdp run`
+  - Disable CDP on a **port**: `no cdp enable`
