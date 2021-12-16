@@ -137,11 +137,130 @@ Security Violation Count: 1
 S1# configure terminal
 S1(config)# interface f0/18
 S1(config-if)# shutdown
-S1(config-if)# noshutdown
+S1(config-if)# no shutdown
 ```
 
+---
+
+# Port Security Violation: restrict mode
+
 ```
-S1(config)# interface f0/18
+S1(config)# interface f0/1
 S1(config-if)# switchport port-security violation restrict
+S1(config-if)# end
+
+S1# show port-security interface f0/1
+Port Security : Enabled
+Port Status : Secure-shutdown
+Violation Mode : Restrict
+Security Violation Count: 1
+
+S1# show port-security
+```
+
+---
+
+# VLAN Attacks Mitigation
+
+1. Disable DTP on non-trunking ports: `switchport mode access`
+2. Disable unused ports and put them in an unused VLAN
+3. Manually enable trunk link: `switchport mode trunk`
+4. Disable DTP on trunking ports: `switchport nonegotiate`
+5. Set native VLAN to a VLAN other than VLAN 1: `switchport trunk native vlan 999`
+
+```
+S1(config)# interface range f0/1-16
+S1(config-if-range)# switchport mode access
+S1(config-if-range)# interface range f0/17-20
+S1(config-if-range)# switchport mode access
+S1(config-if-range)# switchport access vlan 1000
+S1(config-if-range)# interface range f0/21-24
+S1(config-if-range)# switchport mode trunk
+S1(config-if-range)# switchport nonegotiate
+S1(config-if-range)# switchport trunk native vlan 999
+```
+---
+
+# DHCP Attacks Mitigation
+
+1. Enable DHCP snooping in global config: `ip dhcp snooping`
+2. On trusted ports (port connected to DHCP server): `ip dhcp snooping trust`
+3. On untrusted interfaces (access ports), limit DHCP discovery messages received per second: `ip dhcp snooping limit rate 6`
+4. Enable DHCP snooping by VLAN in global config: `ip dhcp snooping 5`
+```
+S1(config)# ip dhcp snooping
+S1(config)# interface f0/1
+S1(config-if)# ip dhcp snooping trust
+S1(config-if)# interface range f0/5-24
+S1(config-if-range)# ip dhcp snooping limit rate 6
+S1(config-if)# exit
+S1(config)# ip dhcp snooping vlan 5,10,50-52
+S1(config)# do show ip dhcp snooping
+S1(config)# do show ip dhcp snooping binding
+```
+
+---
+
+# ARP Attacks Mitigation - Dynamic ARP Inspection
+
+1. Enable DHCP snooping globally
+2. Enable DHCP snooping on selected VLANs.
+3. Enable DAI on selected VLANs.
+4. Configure trusted interfaces for DHCP snooping and ARP inspection.
+
+🟢 **Trusted interfaces:** All uplink ports connected to other switches / routers
+🔴 **Untrusted interfaces:** All access switch ports
+
+---
+
+# DAI Configuration Example
+
+```
+S1(config)# ip dhcp snooping
+S1(config)# ip dhcp snooping vlan 10
+S1(config)# ip arp inspection vlan 10
+S1(config)# interface f0/24
+S1(config-if)# ip dhcp snooping trust
+S1(config-if)# ip arp inspection trust
+S1(config-if)# exit
+S1(config)# ip arp inspection validate src-mac dst-mac ip
+```
+
+![center h:280](img/dai.png)
+
+---
+
+# STP Attacks Mitigation - PortFast and BPDU Guard
+
+- **PortFast**
+  - Immediately brings a port to the forwarding state from a blocking state.
+  - ⚠ **Apply to all end-user access ports**
+  - Enabled on an Interface: `S1(config-if)# spanning-tree portfast`
+  - Enabled Globally: `S1(config)# spanning-tree portfast default`
+- **BPDU Guard**
+  - Immediately error disables a port that receives a BPDU.
+  - ⚠ **Apply to all interfaces attached to end devices**
+  - Enabled on an Interface: `S1(config-if)# spanning-tree bpduguard enable`
+  - Globally: `S1(config)# spanning-tree portfast bpduguard default`
+
+---
+
+# PortFast and BPDU Guard Configuration Example
+
+```
+S1(config)# interface f0/1
+S1(config-if)# spanning-tree bpduguard enable
+S1(config-if)# exit
+S1(config)# spanning-tree portfast bpduguard default
+S1(config)# end
+S1# show spanning-tree summary
 ...
+
+%PORT_SECURITY-2-PSECURE-VIOLATION: Security violation ocurred, caused by
+MAC address 001d.60b3.0aff on port FastEthernet0/1.
+
+S1# show errdisable recovery
+S1# configure terminal
+S1(config)# errdisable reovery cause psecure-violation
+S1(config)# do show errdisable recovery
 ```
