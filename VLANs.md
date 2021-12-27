@@ -71,7 +71,7 @@ h1 {
 ---
 
 # Defining VLAN Trunks
-- **Trunk**:  point-to-point link betweeen 2 network devices that:
+- **Trunk**:  point-to-point link between 2 network devices that:
   - Allows more than one VLAN (by default all VLANs)
   - Extend the VLAN across the entire network
   - Support 802.1q trunking
@@ -109,18 +109,18 @@ h1 {
 # Data and Voice VLAN Example
 
 ```
-S1# configure terminal
-S1(config)# vlan 20
-S1(config-vlan)# name STUDENTS
-S1(config-vlan)# vlan 150
-S1(config-vlan)# name VOICE
-S1(config-vlan)# interface f0/18
-S1(config-if)# switchport mode access
-S1(config-if)# switchport access vlan 20
-S1(config-if)# mls qos trust cos
-S1(config-if)# switchport voice vlan 150
-S1(config-if)# end
-S1# show vlan brief
+S3# configure terminal
+S3(config)# vlan 20
+S3(config-vlan)# name STUDENTS
+S3(config-vlan)# vlan 150
+S3(config-vlan)# name VOICE
+S3(config-vlan)# interface f0/18
+S3(config-if)# switchport mode access
+S3(config-if)# switchport access vlan 20
+S3(config-if)# mls qos trust cos
+S3(config-if)# switchport voice vlan 150
+S3(config-if)# end
+S3# show vlan brief
 ```
 
 ![bg 95% right:42%](img/datavoicevlan.png)
@@ -130,29 +130,29 @@ S1# show vlan brief
 # Trunk Configuration Example
 
 ```
-S1# configure terminal
-S1(config)# vlan 10
-S1(config-vlan)# name Faculty
-S1(config-vlan)# vlan 20
-S1(config-vlan)# name Student
-S1(config-vlan)# vlan 30
-S1(config-vlan)# name Guest
-S1(config-vlan)# vlan 99
-S1(config-vlan)# name Native
-S1(config-vlan)# interface f0/2
-S1(config-if)# switchport mode access
-S1(config-if)# switchport access vlan 10
-S1(config-if)# interface f0/3
-S1(config-if)# switchport mode access
-S1(config-if)# switchport access vlan 20
-S1(config-if)# interface f0/4
-S1(config-if)# switchport mode access
-S1(config-if)# switchport access vlan 30
-S1(config-if)# interface f0/1
-S1(config-if)# switchport mode trunk
-S1(config-if)# switchport trunk native vlan 99
-S1(config-if)# switchport trunk allowed vlan 10,20,30,99
-S1(config-if)# do show interfaces f0/1 switchport
+S2# configure terminal
+S2(config)# vlan 10
+S2(config-vlan)# name Faculty
+S2(config-vlan)# vlan 20
+S2(config-vlan)# name Student
+S2(config-vlan)# vlan 30
+S2(config-vlan)# name Guest
+S2(config-vlan)# vlan 99
+S2(config-vlan)# name Native
+S2(config-vlan)# interface f0/2
+S2(config-if)# switchport mode access
+S2(config-if)# switchport access vlan 10
+S2(config-if)# interface f0/3
+S2(config-if)# switchport mode access
+S2(config-if)# switchport access vlan 20
+S2(config-if)# interface f0/4
+S2(config-if)# switchport mode access
+S2(config-if)# switchport access vlan 30
+S2(config-if)# interface f0/1
+S2(config-if)# switchport mode trunk
+S2(config-if)# switchport trunk native vlan 99
+S2(config-if)# switchport trunk allowed vlan 10,20,30,99
+S2(config-if)# do show interfaces f0/1 switchport
 ```
 
 ![bg 90% right:39%](img/trunk.png)
