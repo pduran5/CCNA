@@ -36,7 +36,7 @@ h1 {
 # Network Security Devices
 - **Virtual Private Network (VPN) enabled router**: Can be integrated into firewall.
 - **Next-Generation Firewall (NGFW)**: stateful packet inspection, application visibility and control, Next-Generation IPS (NGIPS), advanced malware protection (AMP), and URL filtering.
-- **Network Access Control (NAC)**: Includes AAA services. Cisco ISE (Indentity Services Engine)
+- **Network Access Control (NAC)**: Includes AAA services. Cisco ISE (Identity Services Engine)
 
 ---
 
