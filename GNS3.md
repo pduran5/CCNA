@@ -89,7 +89,16 @@ configs_path = C:\Users\alumne\GNS3\configs
 [license]
 gns3vm=73635fd3b0a13ad0;
 ```
-:warning: All ports configured as routed ports ➡️ `S1(config-if)# switchport`
+
+---
+
+# Switch Cisco IOU L2 15.2d Bugs
+
+- 😡 Packets do not pass through switch (e.g. implementing InterVLAN Routing)
+  - 😎 Disable CEF: `Switch(conf)# no ip cef`
+
+- 😡 VTP does not synchronize VLANs
+  - 😎 Disable VTP domain password: `Switch(conf)# no vtp password`
 
 ---
 
