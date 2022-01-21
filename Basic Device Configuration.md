@@ -205,17 +205,19 @@ S1# show ip ssh
 S1# configure terminal
 S1(config)# ip ssh version 2
 S1(config)# ip domain-name cisco.com
-S1(config)# crypto key generate rsa
+S1(config)# crypto key generate rsa modulus 1024
 S1(config)# username admin secret ccna
-S1(config)# line vty 0 15
+S1(config)# line vty 0 4
 S1(config-line)# transport input ssh
 S1(config-line)# login local
 ```
 
-Delete RSA key pairs
-```
-S1(config)# crypto key zeroize rsa
-```
+Delete RSA key pairs: `S1(config)# crypto key zeroize rsa`
+
+SSH Linux connection:
+`
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc -l admin 192.168.99.2`
+
 
 ---
 
@@ -269,3 +271,6 @@ R1# show ip route
 R1# show ipv6 route
 R1# show history
 ```
+
+---
+

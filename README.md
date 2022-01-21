@@ -1,4 +1,6 @@
 # CCNA
+tags: #FpInfor #AsixMP07 #ASIXM07 #CCNA
+
 CCNAv7 short presentations made with [Marp](https://marp.app/).
 
 Usage:
