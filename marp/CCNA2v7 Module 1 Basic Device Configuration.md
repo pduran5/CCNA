@@ -24,7 +24,7 @@ h1 {
 
 # Basic Device Configuration
 
-<!-- _footer: CCNA2v7 Module 1\nPedro Durán -->
+<!-- _footer: CCNA2v7 Module 1 Basic Device Configuration\nPedro Durán -->
 
 ---
 <!-- _header: "Configure a Switch with Initial Settings" -->
