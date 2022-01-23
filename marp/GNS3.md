@@ -81,7 +81,7 @@ configs_path = C:\Users\alumne\GNS3\configs
 
 # Emulate Cisco Managed Switches ➡️ Cisco IOU L2
 
-- Download and extract [Switch.zip](https://drive.google.com/file/d/1SNy5iKSojuDbym-KlAOpGhvIZyA7ITzO/view?usp=sharing)
+- Download and extract [Switch.rar](https://drive.google.com/file/d/1yAjvMrT-CBIH5UbBoauXd9xXE38Oy7Ya/view?usp=sharing)
 - File > Import appliance
 - Appliances > MultiLayer Switch - Cisco IOU L2
 - **License:** Edit > Preferences > IOS on UNIX
@@ -104,7 +104,7 @@ gns3vm=73635fd3b0a13ad0;
 
 # Emulate Cisco Managed Routers ➡️ Cisco IOU L3
 
-- Download and extract [Router.zip](https://drive.google.com/file/d/1VFMEIojAZv9bgDQ3b7uIbVDcMNZRnUyw/view?usp=sharing)
+- Download and extract [Router.rar](https://drive.google.com/file/d/1WoUYqZYQR6FMQa-z-Jesx649Oq4OtYDk/view?usp=sharing)
 - Appliances > Router - Cisco IOU L3
 - When imported, right click > Configure template
   - Check `Use default IOU values for memories`. Set RAM size to 512 MB
