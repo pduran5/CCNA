@@ -56,7 +56,7 @@ h1 {
 
 # Packet Forwarding Decision Process
 
-![fit center](img/packetforwarding.png)
+![w:950 center](img/packetforwarding.png)
 
 ---
 
@@ -87,6 +87,11 @@ h1 {
 
 # Route Table Entries
 
+```
+ O  10.0.4.0/24  [110/50]  via 10.0.3.2,  00:13:29  Serial0/1/0
+(1)     (2)       (3)(4)       (5)          (6)         (7)
+```
+
 1. Route source
 2. Destination network
 3. Administrative distance
@@ -95,7 +100,7 @@ h1 {
 6. Route timestamp
 7. Exit interface
 
-![bg fit right:55%](img/routingtable.png)
+When a router has 2 or more paths to a destination with equal cost metrics, then the router forwards the packets using both paths equally. This is called **equal cost load balancing**.
 
 ---
 
@@ -124,5 +129,48 @@ O    192.168.23.0/30 [110/128]..
 ---
 
 # Administrative distance
+```
+Route Source         Administrative Distance
+-------------------  -----------------------
+Directly connected            0 
+Static route                  1
+EIGRP summary route           5
+External BGP                  20
+Internal EIGRP                90
+OSPF                          110
+IS-IS                         115
+RIP                           120
+External EIGRP                170
+Internal BGP                  200
+```
 
-![](img/administrativedistance.png)
+---
+
+# Static and dynamic routes
+**Static routes:**
+- As a **default route forwarding packets to a service provider**
+- For **routes outside the routing domain** and not learned dynamically
+- When you want to **explicitly define the path** for a specific network
+- For routing between **stub networks**
+
+**Dynamic routes:**
+- In networks consisting of **more than just a few routers**
+- When a **change** in the network topology requires the network to **automatically determine another path**
+- For **scalability**. As the network grows, the dynamic routing protocol automatically learns about any new networks.
+
+---
+
+# Dynamic Routing Protocols
+
+```
+         Interior Gateway Protocols         Exterior Gateway Protocols
+
+       Distance Vector |   Link-State               Path Vector
+       --------------- | --------------             -----------
+IPv4    RIPv2  EIGRP   | OSPFv2  IS-IS                 BGP-4
+IPv6    RIPng  EIGRP   | OSPFv3  IS-IS                 BGP-MP
+```
+
+- **RIP:** Metric is "**hop count**" (each **router** adds a hop). Maximum of **15 hops** allowed.
+- **OSPF:** Metric is "**cost**" (based on the **cumulative bandwidth** from source to destination). Faster links are assigned lower costs compared to slower (higher cost) links.
+- **EIGRP:** Metric based on the **slowest bandwidth and delay values**. It could also include **load and reliability** into the metric calculation. Supports unequal cost load balancing.

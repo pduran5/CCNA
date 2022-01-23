@@ -24,7 +24,7 @@ h1 {
 
 # IPv6 Addressing
 
-<!-- _footer: CCNA1v7 Module 12 IPv6 Addressing -->
+<!-- _footer: CCNA1v7 Module 12 IPv6 Addressing\nPedro Durán -->
 
 ---
 
