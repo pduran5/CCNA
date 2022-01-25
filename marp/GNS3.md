@@ -92,16 +92,6 @@ gns3vm=73635fd3b0a13ad0;
 
 ---
 
-# Switch Cisco IOU L2 15.2d Bugs
-
-- 😡 Packets do not pass through switch (e.g. implementing InterVLAN Routing)
-  - 😎 Disable CEF: `Switch(conf)# no ip cef`
-
-- 😡 VTP does not synchronize VLANs
-  - 😎 Disable VTP domain password: `Switch(conf)# no vtp password`
-
----
-
 # Emulate Cisco Managed Routers ➡️ Cisco IOU L3
 
 - Download and extract [Router.rar](https://drive.google.com/file/d/1WoUYqZYQR6FMQa-z-Jesx649Oq4OtYDk/view?usp=sharing)
@@ -112,6 +102,22 @@ gns3vm=73635fd3b0a13ad0;
 ```
 [license]
 gns3vm=73635fd3b0a13ad0;
+```
+
+---
+
+# Switch Cisco IOU L2 15.2d Bugs
+
+- 😡 Packets do not pass through switch (e.g. implementing InterVLAN Routing)
+  - 😎 Disable CEF: `Switch(conf)# no ip cef`
+
+- 😡 VTP does not synchronize VLANs
+  - 😎 Disable VTP domain password: `Switch(conf)# no vtp password`
+
+
+# Cisco Devices SSH Connection with Linux
+```
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc -l admin 192.168.99.2
 ```
 
 ---
