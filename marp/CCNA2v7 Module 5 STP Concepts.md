@@ -186,7 +186,7 @@ STP convergence requires 3 timers, defined in Root Bridge (changeable):
 
 # Per-VLAN Spanning Tree (PVST)
 
-**A Root Bridge is elected for EACH spanning stree instance/VLAN ➡️ Load Balancing**
+**A Root Bridge is elected for EACH spanning tree instance/VLAN ➡️ Load Balancing**
 - Cisco switches running IOS 15.0+ run PVST+ by default
 
 ![w:700 center](img/pvst.png)
@@ -195,8 +195,8 @@ STP convergence requires 3 timers, defined in Root Bridge (changeable):
 
 # PVST Config: PortFast and BPDU Guard
 
-- **PortFast**: Ports that have end devices (**Access Ports**). Port in FW state.
-- **BPDU Guard**: Disables a PortFast port if a BPDU is received ➡️ Port in errdisabled
+- **PortFast**: Ports that have end devices (**Access Ports**). Port in FWD state.
+- **BPDU Guard**: Disables a PortFast port if a BPDU is received ➡️ Port in `errdisabled`
 
 ```
 S2(config)# interface range f0/11,f0/18,f0/6
