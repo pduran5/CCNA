@@ -34,7 +34,7 @@ h1 {
 - **STP logically blocks physical loops**, preventing frames circling the network forever.
 - STP compensates for a failure by recalculating and opening up previously blocked ports.
 - **STA: Spanning Tree Algorithm**
-  - Creates a loop-free topology by selecting a single root bridge where all the other switches determine a single least-cost path, blocking redudant paths and recalculating in case of Link Failure.
+  - Creates a loop-free topology by selecting a single root bridge where all the other switches determine a single least-cost path, blocking redundant paths and recalculating in case of Link Failure.
 
 - **⚠️ STP enabled by default!!!**
 
@@ -99,11 +99,11 @@ S1# show spanning-tree
 # STP Step #2 - Elect the Root Ports (RP)
 
 - **EVERY NON-ROOT SWITCH will select one Root Port.**
-  - **Root port** (#1, if equals then #2, ...):
-    - #1 Port with overall lower cost to the Root Bridge
-    - #2 Port with lower Sender Bridge ID
-    - #3 Port with lower Sender Port Priority
-    - #4 Port with lower Sender Port ID
+  - **Root port** (1️⃣, if equals then 2️⃣, ...):
+    - 1️⃣ Port with overall lower cost to the Root Bridge
+    - 2️⃣ Port with lower Sender Bridge ID
+    - 3️⃣ Port with lower Sender Port Priority
+    - 4️⃣ Port with lower Sender Port ID
 
 ---
 
@@ -134,11 +134,11 @@ S1(config-if)# spanning-tree cost 25
   - All ports of Root Bridge ➡️ DP
   - One end of a segment is RP ➡️ Other end is DP
   - All ports attached to end devices ➡️ DP
-  - Other segments without DP, one DP (#1, if equals then #2, ...):
-    - #1 Port with overall lower cost to the Root Bridge
-    - #2 Port with lower Sender Bridge ID
-    - #3 Port with lower Sender Port Priority
-    - #4 Port with lower Sender Port ID
+  - Other segments without DP, one DP (1️⃣, if equals then 2️⃣, ...):
+    - 1️⃣ Port with overall lower cost to the Root Bridge
+    - 2️⃣ Port with lower Sender Bridge ID
+    - 3️⃣ Port with lower Sender Port Priority
+    - 4️⃣ Port with lower Sender Port ID
 
 ---
 
