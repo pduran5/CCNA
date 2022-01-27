@@ -43,17 +43,17 @@ h1 {
 # STP
 
 - **Problems solved:**
-  - **MAC database instability**: MAC address table constantly changing from the broadcast frames -> High CPU -> Switch unable to forward frames
-  - **Broadcast Storm**: high number of broadcasts overwhelming the network 🔥
-  - **Duplicated unicast frames:** devices receive twice the same frame from different paths.
+  - 🥸 **MAC database instability**: MAC address table constantly changing from the broadcast frames ➡️ High CPU ➡️ Switch unable to forward frames
+  - ⛈️ **Broadcast Storm**: high number of broadcasts overwhelming the network🔥
+  - 👯‍♀️ **Duplicated unicast frames:** devices receive twice the same frame from different paths.
 - **Usages:**
-  - **Solves L2 looping problems**
-  - **Provides alternative paths in case of failure**
-  - **Provides VLAN Load Balancing between trunks**
+  - ♾️ **Solves L2 looping problems**
+  - 🛤️ **Provides alternative paths in case of failure**
+  - ⚖️ **Provides VLAN Load Balancing between trunks**
 
 ---
 
-# STP Step #1 - Elect the Root Bridge (RB)
+# STP Step 1️⃣ - Elect the Root Bridge (RB)
 - STA designates a single switch as root bridge
 - **Root Bridge = Switch with the lowest BID (Bridge ID)**
 - **BID  = (Bridge Priority + VLAN ID) . Bridge MAC**
@@ -69,22 +69,22 @@ h1 {
 
 ---
 
-# STP Step #1 - Elect the Root Bridge
+# STP Step 1️⃣ - Elect the Root Bridge
 
 ![w:700 center](img/stpstep1.png)
 
 ---
 
-# STP Step #1 - Changing and verify Root Bridge
+# STP Step 1️⃣ - Changing and verify Root Bridge
 
-**Option 1: Select root bridge manually**
+**Option 1️⃣: Select root bridge manually**
 ```
 S1(config)# spanning-tree VLAN 1 root primary
 ...
 S2(config)# spanning-tree VLAN 1 root secondary
 ```
 
-**Option 2: Change the priority value**
+**Option 2️⃣: Change the priority value**
 ```
 S1(config)# spanning-tree VLAN 1 priority 24576
 ```
@@ -96,10 +96,10 @@ S1# show spanning-tree
 
 ---
 
-# STP Step #2 - Elect the Root Ports (RP)
+# STP Step 2️⃣ - Elect the Root Ports (RP)
 
-- **EVERY NON-ROOT SWITCH will select one Root Port.**
-  - **Root port** (1️⃣, if equals then 2️⃣, ...):
+- **EVERY NON-ROOT SWITCH will select one Root Port <span style="color:blue">RP</span>.**
+  - **Root port** <span style="color:blue">RP</span> (1️⃣, if equals then 2️⃣, ...):
     - 1️⃣ Port with overall lower cost to the Root Bridge
     - 2️⃣ Port with lower Sender Bridge ID
     - 3️⃣ Port with lower Sender Port Priority
@@ -113,7 +113,7 @@ S1# show spanning-tree
 
 ![w:500](img/rootpathcost.png)
 
-## Modify Cost
+## Modify Path Cost
 
 ```
 S1(config)# interface f0/1
@@ -122,19 +122,19 @@ S1(config-if)# spanning-tree cost 25
 
 ---
 
-# STP Step #2 - Elect the Root Ports
+# STP Step 2️⃣ - Elect the Root Ports
 
 ![w:700 center](img/stpstep2.png)
 
 ---
 
-# STP Step #3 - Elect Designated Ports (DP)
+# STP Step 3️⃣ - Elect Designated Ports (DP)
 
-- **EVERY SEGMENT between 2 switches will have one Designated Port.**
-  - All ports of Root Bridge ➡️ DP
-  - One end of a segment is RP ➡️ Other end is DP
-  - All ports attached to end devices ➡️ DP
-  - Other segments without DP, one DP (1️⃣, if equals then 2️⃣, ...):
+- **EVERY SEGMENT between 2 switches will have one Designated Port <span style="color:green">DP</span>.**
+  - All ports of Root Bridge ➡️ <span style="color:green">DP</span>
+  - One end of a segment is <span style="color:blue">RP</span> ➡️ Other end is <span style="color:green">DP</span>
+  - All ports attached to end devices ➡️ <span style="color:green">DP</span>
+  - Other segments without DP, one <span style="color:green">DP</span> (1️⃣, if equals then 2️⃣, ...):
     - 1️⃣ Port with overall lower cost to the Root Bridge
     - 2️⃣ Port with lower Sender Bridge ID
     - 3️⃣ Port with lower Sender Port Priority
@@ -142,15 +142,15 @@ S1(config-if)# spanning-tree cost 25
 
 ---
 
-# STP Step #3 - Elect Designated Ports
+# STP Step 3️⃣ - Elect Designated Ports
 
 ![w:700 center](img/stpstep3.png)
 
 ---
 
-# <!--fit--> STP Step #4 - Elect Alternate/Blocked Ports (ALT/BLK)
+# <!--fit--> STP Step 4️⃣ - Elect Alternate/Blocked Ports (ALT/BLK)
 
-- **Block ports that are not RP or DP**
+- **Block ports that are not <span style="color:blue">RP</span> or <span style="color:green">DP</span>** ➡️ **<span style="color:red">ALT/BLK</span>**
 
 ![w:700 center](img/stpstep4.png)
 
@@ -160,8 +160,8 @@ S1(config-if)# spanning-tree cost 25
 
 ![w:1000 center](img/lowestsenderbid.png)
 
-> S2: Root Port is F0/1, because S4 has a lower sender BID than S3
-> Same cost > Different Sender BID
+> **S2:** <span style="color:blue">RP</span> is F0/1, because S4 has a lower sender BID than S3.
+> Same cost ➡️ Different Sender BID
 
 ---
 
@@ -169,16 +169,16 @@ S1(config-if)# spanning-tree cost 25
 
 ![w:1100 center](img/lowersenderportpriority.png)
 
-> S4: Root Port is F0/6, because S1 F0/1 has a lower sender Port ID than S1 F0/2
-> Same cost > Same sender BID > Same Port Priority > Different Sender Port ID
+> **S4:** <span style="color:blue">RP</span> is F0/6, because S1 F0/1 has a lower sender Port ID than S1 F0/2.
+> Same cost ➡️ Same sender BID ➡️ Same Port Priority ➡️ Different Sender Port ID
 
 ---
 
 # STP Timers and Port States
 STP convergence requires 3 timers, defined in Root Bridge (changeable):
-- **Hello Timer**: Interval between PDUS. Default = **2 seconds** (range: 1...10 seconds)
-- **Forward Delay Timer**: Time that is spent in the listening and learning state. Default = **15 seconds** (range: 4...30 seconds)
-- **Max Age Timer**: Maximum length of time that a switch waits before attempting to change the STP Topology. Default = **20 seconds** (range: 6...40 seconds)
+- 👋 **Hello Timer**: Interval between PDUS. Default = **2 seconds** (range: 1...10 seconds)
+- ⤴️ **Forward Delay Timer**: Time that is spent in the listening and learning state. Default = **15 seconds** (range: 4...30 seconds)
+- 👵 **Max Age Timer**: Maximum length of time that a switch waits before attempting to change the STP Topology. Default = **20 seconds** (range: 6...40 seconds)
 
 ![w:500 center](img/stpstates.png)
 
@@ -221,7 +221,7 @@ S2(config-if-range)# spanning-tree bpduguard enable
 ---
 
 # RSTP
-- **Alternate Port** (alternate path to the Root Bridge) ➡️ change to forwarding state without waiting the network to converge.
+- **Alternate Port** (alternate path to the Root Bridge) ➡️ change to FWD state without waiting the network to converge.
 - **Backup Port**: backup to a shared medium (Hub). Less common!!
 
 ![w:900 center](img/rstp.png)
