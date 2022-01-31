@@ -48,7 +48,7 @@ h1 {
 # Restrictions
 - Interface types cannot be mixed (FastEthernet <> GigabitEthernet).
 - Up to 8 Ethernet ports (800 Mbps or 8 Gbps). Cisco 2960 up to 6 EtherChannels
-- Individual EtherChannel group member port config must be consistent om both sides (L2 ports, if it's a trunk -> same native VLAN)
+- Individual EtherChannel group member port config must be consistent om both sides (L2 ports, if it's a trunk ➡️ same native VLAN)
 
 ---
 
@@ -79,6 +79,7 @@ h1 {
 
 # LACP Configuration Example
 
+![center w:800](img/lacp.png)
 ```
 S1(config)# interface range f0/1-2
 S1(config-if-range)# channel-group 1 mode active
