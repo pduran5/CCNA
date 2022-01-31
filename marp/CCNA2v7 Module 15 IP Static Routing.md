@@ -22,9 +22,9 @@ h1 {
 
 <!-- _paginate: false -->
 
-# IP Static Routing
+# IP Static Routing Configuration and Troubleshooting
 
-<!-- _footer: CCNA2v7 Module 15 IP Static Routing\nPedro Durán -->
+<!-- _footer: CCNA2v7 Module 15 IP Static Routing + CCNA2v7 Module 16: Troubleshoot Static and Default Routes\nPedro Durán -->
 
 ---
 
@@ -107,3 +107,13 @@ Branch(config)# ip route 209.165.200.238 255.255.255.255 198.51.100.2
 Branch(config)# ipv6 route 2001:db8:acad:2::238/128 2001:db8:acad:1::2
 Branch(config)# ipv6 route 2001:db8:acad:2::238/128 s0/1/0 fe80::2
 ```
+
+---
+
+# Common Troubleshooting Commands
+
+- `ping`
+- `traceroute`
+- `show ip route`
+- `show ip interface brief`
+- `show cdp neighbors`
