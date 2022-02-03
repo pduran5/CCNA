@@ -48,7 +48,7 @@ h1 {
 # Restrictions
 - Interface types cannot be mixed (FastEthernet <> GigabitEthernet).
 - Up to 8 Ethernet ports (800 Mbps or 8 Gbps). Cisco 2960 up to 6 EtherChannels
-- Individual EtherChannel group member port config must be consistent om both sides (L2 ports, if it's a trunk ➡️ same native VLAN)
+- Individual EtherChannel group member port config must be consistent on both sides (L2 ports, if it's a trunk ➡️ same native VLAN)
 
 ---
 
