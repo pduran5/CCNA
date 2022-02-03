@@ -48,15 +48,15 @@ S1(config-if)# switchport port-security maximum 2
 
 # Learn MAC Addresses modes
 
-1. **Manually Configured**
+1️⃣ **Manually Configured**
 ```
 S1(config-if)# switchport port-security mac-address cafe.caca.baba
 ```
 
-2. **Dynamically Learned**
+2️⃣ **Dynamically Learned**
 `switchport port-security` command ➡️ current source MAC secured but NOT added to `running-config` (config lost!)
 
-3. **Dynamically Learned - Sticky**
+3️⃣ **Dynamically Learned - Sticky**
 ```
 S1(config-if)# switchport port-security mac-address sticky
 ```
@@ -109,14 +109,14 @@ S1(config-if)# switchport port-security aging static
 
 # Port Security Violation Modes
 
-MAC address differs from list of secured addresses ➡️ Port violation (error-disabled)
+MAC address differs from list of secured addresses ➡️ Port violation (`err-disabled`)
 
-- **shutdown** (default): ❌err-disabled immediately + LED off + 📨sends syslog + 💦increments violation counter. Re-enable: `shutdown`and `no shutdown`
+- **shutdown** (default): ❌`err-disabled` immediately + LED off + 📨sends syslog + 💦increments violation counter. Re-enable: `shutdown`and `no shutdown`
 ```
 S1(config-if)# switchport port-security violation shutdown
 ```
 
-- **restrict**: port drops packets with unknown source address until removed below the maximum allowed. 💦increments violation counter + 📨sends syslog
+- **restrict**: port drops packets with unknown source address until removed below the maximum allowed. 💦 increments violation counter + 📨sends syslog
 ```
 S1(config-if)# switchport port-security violation restrict
 ```
@@ -131,18 +131,18 @@ S1(config-if)# switchport port-security violation protect
 
 # Mitigate VLAN attacks
 
-1. Disable DTP on non-trunking ports
+1️⃣ **Disable DTP on non-trunking ports**
 ```
 S1(config)# interface f0/1 - 16
 S1(config-if-range)# switchport mode access
 ```
-2. Disable unused ports and put them in an unused VLAN
+2️⃣ **Disable unused ports and put them in an unused VLAN**
 ```
 S1(config)# interface f0/17 - 20
 S1(config-if-range)# switchport mode access
 S1(config-if-range)# switchport access vlan 1000
 ```
-3. Manually enable trunks + 4. Disable DTP on trunking ports +5. Set the native VLAN to a VLAN other than VLAN 1
+**3️⃣ Manually enable trunks + 4️⃣ Disable DTP on trunking ports + 5️⃣ Set the native VLAN to a VLAN other than VLAN 1**
 ```
 S1(config)# interface f0/21 - 24
 S1(config-if-range)# switchport mode trunk
@@ -169,11 +169,11 @@ S1(config-if-range)# switchport trunk native vlan 999
 
 ![](img/dhcpsnooping.png)
 
-1. Enable DHCP snooping:
+1️⃣ **Enable DHCP snooping**
 ```
 S1(config)# ip dhcp snooping
 ```
-2. On trusted ports:
+2️⃣ **On trusted ports**
 ```
 S1(config)# interface f0/1
 S1(config-if)# ip dhcp snooping trust
@@ -186,12 +186,12 @@ S1(config-if)# ip dhcp snooping trust
 
 ![](img/dhcpsnooping.png)
 
-3. On untrusted interfaces, limit the number of DHCP discovery messages received (packets/second):
+3️⃣ On untrusted interfaces, **limit the number of DHCP discovery messages received (packets/second)**
 ```
 S1(config)# interface range f0/5 - 24
 S1(config-if)# ip dhcp snooping limit rate 6
 ```
-4. Enable DHCP snooping by VLAN
+4️⃣ **Enable DHCP snooping by VLAN**
 ```
 S1(config)# ip dhcp snooping vlan 5,10,50-52
 S1# show ip dhcp snooping
@@ -209,7 +209,7 @@ S1# show ip dhcp snooping binding
   - **Intercept all ARP Requests and Replies on untrusted ports.**
   - Verify each intercepted packet for **valid IP-to-MAC binding**.
   - **Drop and log ARP Replies coming from invalid** to prevent ARP poisoning.
-  - **err-disabled the interface** if the configured DAI number of ARP packets is exceeded.
+  - **`err-disabled` the interface** if the configured DAI number of ARP packets is exceeded.
 
 All access switch ports: 🔴 untrusted
 All uplink ports that are connected to other switches: 🟢 trusted
@@ -220,22 +220,22 @@ All uplink ports that are connected to other switches: 🟢 trusted
 
 ![bg 85% right:40%](img/dai.png)
 
-1. Enable DHCP snooping globally
+1️⃣ **Enable DHCP snooping globally**
 ```
 S1(config)# ip dhcp snooping
 ```
 
-2. Enable DHCP snooping on selected VLANs
+2️⃣ **Enable DHCP snooping on selected VLANs**
 ```
 S1(config)# ip dhcp snooping vlan 10
 ```
 
-3. Enable DAI on selected VLANs.
+3️⃣ **Enable DAI on selected VLANs**
 ```
-S1(config)# ip arp inspectgion vlan 10
+S1(config)# ip arp inspection vlan 10
 ```
 
-4. Configure trusted interfaces
+4️⃣ **Configure trusted interfaces**
 ```
 S1(config)# interface f0/24
 S1(config-if)# ip dhcp snooping trust
@@ -246,7 +246,7 @@ S1(config-if)# ip arp inspection trust
 
 # Mitigate STP Attacks ➡️ PortFast and BPDU Guard
 
-- **PortFast**: brings a port to the FWD state from a BLK state (bypassing listening and learning states). 
+- **PortFast**: brings a port to the <span style="color:green">FWD</span> state from a <span style="color:red">BLK</span> state (bypassing listening and learning states). 
   - ⚠️ Apply to all end-user access ports
   - On a **interface**
   ```
@@ -263,7 +263,7 @@ S1(config-if)# ip arp inspection trust
 
 # Mitigate STP Attacks ➡️ PortFast and BPDU Guard
 
-- **BPDU Guard**: err-disabled a port that receives a BPDU
+- **BPDU Guard**: `err-disabled` a port that receives a BPDU
   - ⚠️ Apply to all end-user access ports
   - Automatically re-enable port:
   ```
