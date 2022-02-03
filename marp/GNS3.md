@@ -104,6 +104,11 @@ gns3vm=73635fd3b0a13ad0;
 gns3vm=73635fd3b0a13ad0;
 ```
 
+# Cisco Router SSH Connection with Linux 
+```
+ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc -l admin 10.0.1.1
+```
+
 ---
 
 # Switch Cisco IOU L2 15.2d Bugs
@@ -114,8 +119,11 @@ gns3vm=73635fd3b0a13ad0;
 - 😡 VTP does not synchronize VLANs
   - 😎 Disable VTP domain password: `Switch(conf)# no vtp password`
 
+- 😡 SSH access not enable
+  - 😎 Use telnet connection on 15.2d or change the switch to version 15.6.0.9S
 
-# Cisco Devices SSH Connection with Linux
+
+# Cisco Switch SSH Connection with Linux (15.6.0.9S)
 ```
 ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc -l admin 192.168.99.2
 ```
