@@ -119,7 +119,7 @@ ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 -oHostKeyAlgorithms=+ssh-rsa -c
 - 😡 VTP does not synchronize VLANs
   - 😎 Disable VTP domain password: `Switch(conf)# no vtp password`
 
-- 😡 SSH access not enable
+- 😡 SSH access not enabled
   - 😎 Use telnet connection on 15.2d or change the switch to version 15.6.0.9S
 
 
