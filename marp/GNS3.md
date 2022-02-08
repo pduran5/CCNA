@@ -145,6 +145,27 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c 
 
 ---
 
+# Docker - Enable data persistence
+
+Add these folders to Configure > Advanced > Additional directories...
+```
+/bin
+/boot
+/dev
+/etc
+/gns3
+/gns3volumes
+/home
+/lib
+/lib64
+/root
+/sbin
+/var
+/usr
+```
+
+---
+
 # Connect to Internet ➡️ NAT
 
 - Fastest
