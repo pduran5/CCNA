@@ -29,8 +29,8 @@ h1 {
 ---
 
 # Functions of a Router and Longest Match
-1. **Determine the best path** to forward packets based on the information in its **routing table**.
-2. **Forward packets** towards their destination.
+1️⃣ **Determine the best path** to forward packets based on the information in its **routing table**.
+2️⃣ **Forward packets** towards their destination.
 
 **Best Path** = **Longest Match** =  Routing table entry that has the **greatest number of far-left matching bits with the destination IP address** of the packet.
 
@@ -61,11 +61,13 @@ h1 {
 ---
 
 # Packet Forwarding Mechanisms
-1. **Process switching**
+1️⃣ **Process switching**
   - Packet arrives on interface ➡ forwarded to control plane ➡ CPU matches destination address in routing table ➡ forwards to exit interface
-2. **Fast switching**
+
+2️⃣ **Fast switching**
   - Uses fast-switching cache to store next-hop information ➡ cache re-used without CPU intervention
-3. **Cisco Express Forwarding (CEF)**
+
+3️⃣ **Cisco Express Forwarding (CEF)**
   - Default Cisco IOS forwarding mechanism
   - CEF builds a Forwarding Information Base (FIB) and adjacency table.
   - Table entries are change-triggered.
@@ -92,13 +94,13 @@ h1 {
 (1)     (2)       (3)(4)       (5)          (6)         (7)
 ```
 
-1. Route source
-2. Destination network
-3. Administrative distance
-4. Metric
-5. Next-hop
-6. Route timestamp
-7. Exit interface
+1️⃣ Route source
+2️⃣ Destination network
+3️⃣ Administrative distance
+4️⃣ Metric
+5️⃣ Next-hop
+6️⃣ Route timestamp
+7️⃣ Exit interface
 
 When a router has 2 or more paths to a destination with equal cost metrics, then the router forwards the packets using both paths equally. This is called **equal cost load balancing**.
 
@@ -115,16 +117,17 @@ Example:
 ```
 Router# show ip route 
 (Output omitted) 
-   192.168.1.0/24 is variably..
-C    192.168.1.0/24 is direct..
-L    192.168.1.1/32 is direct..
-O    192.168.2.0/24 [110/65]..
-O    192.168.3.0/24 [110/65]..
-   192.168.13.0/24 is variably..
-C    192.168.13.0/30 is direct..
-L    192.168.13.1/32 is direct..
-   192.168.23.0/30 is subnette..
-O    192.168.23.0/30 [110/128]..
+   172.16.0.0/16 is variably subnetted, 4 subnets, 3 masks
+C    172.16.1.0/24 is directly connected, GigabitEthernet0/0
+L    172.16.1.1/32 is directly connected, GigabitEthernet0/0
+C    172.16.3.0/30 is directly connected, Serial0/0
+L    172.16.3.1/32 is directly connected, Serial0/0
+   192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks
+L    192.168.10.4/30 is directly connected, Serial0/0/1
+     192.168.10.5/32 is directly connected, Serial0/0/1
+   192.168.23.0/30 is subnetted, 1 subnets
+O    192.168.23.0 [110/128] via 192.168.10.6, 00:02:39, Serial0/0/1
+                  [110/128] via 172.16.3.2, 00:18:52, Serial0/0/0
 ```
 ---
 
