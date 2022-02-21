@@ -54,6 +54,7 @@ S1(config)#enable password class
 R1#show ip ssh
 R1#conf t
 R1(config)#ip ssh version 2
+R1(config)#ip domain name cisco.com
 R1(config)#crypto key generate rsa modulus 1024
 R1(config)#username admin secret ccna
 R1(config)#line vty 0 4 
