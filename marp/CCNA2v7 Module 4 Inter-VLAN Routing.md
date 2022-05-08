@@ -31,13 +31,13 @@ h1 {
 # Inter-VLAN Routing
 - Process of forwarding network traffic from one VLAN to another VLAN.
 - **3 options:**
-  - **Legacy Inter-VLAN Routing**: Legacy. Does not scale well.
-  - **Router-on-a-Stick (RoaS)**: Acceptable for small to medium-sized network.
-  - **Inter-VLAN Routing on a Layer 3 Switch**: Most scalable solution for medium to large organizations.
+  1️⃣ **Legacy Inter-VLAN Routing**: Legacy. Does not scale well.
+  2️⃣ ⭐ **Router-on-a-Stick (RoaS)**: Acceptable for small to medium-sized network.
+  3️⃣ ⭐ **Inter-VLAN Routing on a Layer 3 Switch**: Most scalable solution for medium to large organizations.
 
 ---
 
-# 1. Legacy Inter-VLAN Routing
+# 1️⃣ Legacy Inter-VLAN Routing
 
 - Using a **Router** requiring **1 physical interface per VLAN**.
 - **Limitation:** Routers have a limited number of interfaces.
@@ -47,7 +47,7 @@ h1 {
 
 ---
 
-# 2. Router-on-a-Stick Inter-VLAN Routing (RoaS)
+# 2️⃣ ⭐ Router-on-a-Stick Inter-VLAN Routing (RoaS)
 
 - **Only requires 1 physical interface** to route traffic between multiple VLANs.
 - Router (trunk port) > Link > Switch (trunk port)
@@ -57,7 +57,7 @@ h1 {
 
 ---
 
-# 2. RoaS Configuration (S1/S2)
+# 2️⃣ RoaS Configuration (S1/S2)
 
 ```
 S2(config)# vlan 10
@@ -81,7 +81,7 @@ S2(config-if)# no shutdown
 
 ---
 
-# 2. RoaS Configuration (R1)
+# 2️⃣ RoaS Configuration (R1)
 
 ```
 R1(config)# interface g0/0/1.10
@@ -108,22 +108,22 @@ R1(config-if)# no shutdown
 
 ---
 
-# 3. Inter-VLAN Routing on a Layer 3 Switch
+# 3️⃣ ⭐ Inter-VLAN Routing on a Layer 3 Switch
 
 - Modern method that uses **Layer 3 / Multilayer Switches** and SVIs.
-- SVI created for each VLAN.
+- SVI created for each VLAN ➡️ `interface vlan 10`
 - Convert a Layer 2 switchport to a Layer 3 interface (**routed port**).
 - **Advantages:**
   - 🚅 Much faster than RoaS.
   - No need for external links from the switch to the router.
-  - Not limited to 1 link ➡️ EtherChannels as trunk links betweeen switches
+  - Not limited to 1 link ➡️ EtherChannels as trunk links between switches
   - Latency much lower.
-  - More commonly deployed in a Campus LAN than router.
+  - **More commonly deployed in a Campus LAN than router.**
 - **Disavantage:** 💵 Layer 3 Switches are more expensive.
 
 ---
 
-# 3. L3 Switch Routing Config
+# 3️⃣ L3 Switch Routing Config
 
 ```
 D1(config)# vlan 10
