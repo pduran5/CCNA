@@ -61,12 +61,26 @@ configs_path = C:\Users\alumne\GNS3\configs
 
 ---
 
-# Emulate PCs ➡️ Alpine Linux dockers
+# Emulate PCs (Terminal) ➡️ Alpine Linux dockers
 
 ## Installation
 - File > New template
 - Install an appliance from the GNS3 server (recommended)
 - Guests > Alpine Linux
+- Install the appliance on the GNS3 VM (recommended)
+
+## IP Configuration
+
+- Before booting up: Right click > Edit config
+
+---
+
+# Emulate PCs (Graphical) ➡️ webterm dockers
+
+## Installation
+- File > New template
+- Install an appliance from the GNS3 server (recommended)
+- Guests > webterm
 - Install the appliance on the GNS3 VM (recommended)
 
 ## IP Configuration
@@ -115,6 +129,7 @@ ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 -oHostKeyAlgorithms=+ssh-rsa -c
 
 - 😡 Packets do not pass through switch (e.g. implementing InterVLAN Routing)
   - 😎 Disable CEF: `Switch(conf)# no ip cef`
+  - 😎 Disable IGMP Snooping: `Switch(conf)# no ip igmpsnooping`
 
 - 😡 VTP does not synchronize VLANs
   - 😎 Disable VTP domain password: `Switch(conf)# no vtp password`
