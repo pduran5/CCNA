@@ -210,3 +210,15 @@ R1(config)# ip nat inside source list 1 interface e0/0 overload
 R1(config)# access-list 1 permit 172.16.100.0 0.0.0.255
 R1(config)# access-list 1 permit 172.16.200.0 0.0.0.255
 ```
+
+---
+
+# <!--fit--> Link GNS3 topologies on 2 different hosts with Cloud UDP tunnels
+
+![w:1000 center](img/gns3interconnect2hosts.png)
+
+---
+
+# <!--fit--> Link GNS3 topologies on 3 different hosts with Cloud UDP tunnels
+
+![center](img/gns3interconnect3hosts.png)
