@@ -23,7 +23,7 @@ h1 {
 <!-- _paginate: false -->
 
 ![bg 20% center](https://www.gns3.com/assets/custom/gns3/images/logo-colour.png)
-<!-- _footer: GNS3 Recommended Settings\nPedro Durán -->
+<!-- _footer: 👨🏻‍🏫 Pedro Durán -->
 
 ---
 
@@ -34,13 +34,10 @@ Open-source network software emulator that allows the combination of virtual and
 
 ---
 
-# Classroom Final configuration
+# Classroom GNS3 final configuration 
 
-Already installed on classroom PCs
-- GNS3 version 2.2.21
-- VirtualBox
 
-Edit `%APPDATA%\GNS3\2.2\gns3_server.ini` and change `Administrator` to your username (e.g. `alumne`):
+1️⃣ Edit `%APPDATA%\GNS3\2.2\gns3_server.ini` and change `Administrator` to your username (e.g. `alumne`):
 ```
 images_path = C:\Users\alumne\GNS3\images
 projects_path = C:\Users\alumne\GNS3\projects
@@ -49,56 +46,97 @@ symbols_path = C:\Users\alumne\GNS3\symbols
 configs_path = C:\Users\alumne\GNS3\configs
 ```
 
+2️⃣ Download and import .ova from `GNS3.VM.VirtualBox.2.2.32.zip` https://github.com/GNS3/gns3-gui/releases/tag/v2.2.32
+
+
+3️⃣ In GNS3 VM, add a **3rd Bridged network card**. Check **Promiscous mode: Allow all**.
+
+
+---
+
+# Classroom GNS3 final configuration
+
+4️⃣ Run GNS3 VM, select OK ➡️ Network ➡️ Yes
+
+5️⃣ Modify netplan to assign a static IP (one classroom IP assigned for each student):
+
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth2:
+      addresses: [STUDENT_ASSIGNED_IP/24]
+      gateway4: CLASSROOM_GATEWAY_IP
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]
+```
+
+6️⃣ Save and exit.
+
 ---
 
 # Install GNS3 at home
 
-1. Download `GNS3-2.2.21-all-in-one.exe` from https://github.com/GNS3/gns3-gui/releases/tag/v2.2.21
+1️⃣ Download `GNS3-2.2.32-all-in-one.exe` from https://github.com/GNS3/gns3-gui/releases/tag/v2.2.32
 
-2. Install selecting VirtualBox.
+2️⃣ Install selecting VirtualBox.
 
-3. Download and import .ova from `GNS3.VM.VirtualBox.2.2.21.zip`
+3️⃣ Download and import .ova from `GNS3.VM.VirtualBox.2.2.32.zip`
+
+
 
 ---
 
 # Emulate PCs (Terminal) ➡️ Alpine Linux dockers
 
 ## Installation
-- File > New template
-- Install an appliance from the GNS3 server (recommended)
-- Guests > Alpine Linux
-- Install the appliance on the GNS3 VM (recommended)
+1️⃣ File ➡️ New template
+
+2️⃣ Install an appliance from the GNS3 server (recommended)
+
+3️⃣ Guests ➡️ Alpine Linux
+
+4️⃣ Install the appliance on the GNS3 VM 
+(recommended)
 
 ## IP Configuration
 
-- Before booting up: Right click > Edit config
+- Before booting up: Right click ➡️ Edit config
 
 ---
 
 # Emulate PCs (Graphical) ➡️ webterm dockers
 
 ## Installation
-- File > New template
-- Install an appliance from the GNS3 server (recommended)
-- Guests > webterm
-- Install the appliance on the GNS3 VM (recommended)
+1️⃣ File ➡️ New template
+
+2️⃣ Install an appliance from the GNS3 server (recommended)
+
+3️⃣ Guests ➡️ webterm
+
+4️⃣ Install the appliance on the GNS3 VM (recommended)
 
 ## IP Configuration
 
-- Before booting up: Right click > Edit config
+- Before booting up: Right click ➡️ Edit config
 
 ---
 
 # Emulate Non-Managed Switches ➡️ Ethernet switch
 
-- Run Ethernet switch on **GNS3 VM**
+:warning: Run Ethernet switch on **GNS3 VM**
 
 # Emulate Cisco Managed Switches ➡️ Cisco IOU L2
 
-- Download and extract [Switch.rar](https://drive.google.com/file/d/1yAjvMrT-CBIH5UbBoauXd9xXE38Oy7Ya/view?usp=sharing)
-- File > Import appliance
-- Appliances > MultiLayer Switch - Cisco IOU L2
-- **License:** Edit > Preferences > IOS on UNIX
+1️⃣ Download and extract [Switch.rar](https://drive.google.com/file/d/1yAjvMrT-CBIH5UbBoauXd9xXE38Oy7Ya/view?usp=sharing)
+
+2️⃣ File ➡️ Import appliance
+
+3️⃣ Appliances ➡️ MultiLayer Switch - Cisco IOU L2
+
+
+4️⃣ **Add License:** Edit ➡️ Preferences ➡️ IOS on UNIX. Paste the following:
 ```
 [license]
 gns3vm=73635fd3b0a13ad0;
@@ -108,11 +146,14 @@ gns3vm=73635fd3b0a13ad0;
 
 # Emulate Cisco Managed Routers ➡️ Cisco IOU L3
 
-- Download and extract [Router.rar](https://drive.google.com/file/d/1WoUYqZYQR6FMQa-z-Jesx649Oq4OtYDk/view?usp=sharing)
-- Appliances > Router - Cisco IOU L3
-- When imported, right click > Configure template
+1️⃣ Download and extract [Router.rar](https://drive.google.com/file/d/1WoUYqZYQR6FMQa-z-Jesx649Oq4OtYDk/view?usp=sharing)
+
+2️⃣ Appliances ➡️ Router - Cisco IOU L3
+
+3️⃣ When imported, right click ➡️ Configure template
   - Check `Use default IOU values for memories`. Set RAM size to 512 MB
-- **License:** Edit > Preferences > IOS on UNIX
+
+4️⃣ **Add License:** Edit ➡️ Preferences ➡️ IOS on UNIX. Paste the following:
 ```
 [license]
 gns3vm=73635fd3b0a13ad0;
@@ -129,7 +170,7 @@ ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 -oHostKeyAlgorithms=+ssh-rsa -c
 
 - 😡 Packets do not pass through switch (e.g. implementing InterVLAN Routing)
   - 😎 Disable CEF: `Switch(conf)# no ip cef`
-  - 😎 Disable IGMP Snooping: `Switch(conf)# no ip igmpsnooping`
+  - 😎 Disable IGMP Snooping: `Switch(conf)# no ip igmp snooping`
 
 - 😡 VTP does not synchronize VLANs
   - 😎 Disable VTP domain password: `Switch(conf)# no vtp password`
@@ -147,14 +188,14 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c 
 
 # Emulate OS via VirtualBox
 
-- In VirtualBox, **disconnect all network cards**
-- Edit > Preferences > VirtualBox VMs > New
+- :warning: In VirtualBox, **disconnect all network cards**
+- Edit ➡️ Preferences ➡️ VirtualBox VMs ➡️ New
 - Run this VirtualBox VM on my local computer
 - Choose a VirtualBox VM from the list
 
 # Emulate OS via Docker
 
-- Edit > Preferences > Docker container > New
+- Edit ➡️ Preferences ➡️ Docker container ➡️ New
 - Run this Docker container on the GNS3 VM
 - New Image: image name from [Docker Hub](https://hub.docker.com/) (e.g. nginx)
 
@@ -162,7 +203,7 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c 
 
 # Docker - Enable data persistence
 
-Add these folders to Configure > Advanced > Additional directories...
+Add these folders to Configure ➡️ Advanced ➡️ Additional directories...
 ```
 /bin
 /boot
@@ -184,10 +225,10 @@ Add these folders to Configure > Advanced > Additional directories...
 # Connect to Internet ➡️ NAT
 
 - Fastest
-- Run NAT on **GNS3 VM**
+- :warning: Run NAT on **GNS3 VM**
 - :warning: Cannot access GNS3 topology from external network
 - :warning: **Only in A22**: A22 uses 192.168.122.0/24 that conflicts with NAT default assigned range.
-  - When loaded GNS3VM, press Enter (OK) > Shell
+  - When loaded GNS3VM, press Enter (OK) ➡️ Shell
   - `virsh net-edit default`
   - Change `122` to another number (e.g. `112`)
 
@@ -195,8 +236,7 @@ Add these folders to Configure > Advanced > Additional directories...
 
 # Connect to Internet ➡️ Cloud with bridged interface
 
-- In GNS3VM, add a **3rd Bridged network card**. Check **Promiscous mode: Allow all**.
-- Drag **Cloud**, run on **GNS3VM** and connect to **eth2**
+- :warning: Drag **Cloud**, run on **GNS3VM** and connect to **eth2**
 - :warning: **When using an Edge router:**
   - 1. Change MAC address of the interface connected to Cloud (one MAC assigned to each student): `R1(config-if)# mac-address aabb.cc00.0001`
   - 2. NAT overload is needed:
