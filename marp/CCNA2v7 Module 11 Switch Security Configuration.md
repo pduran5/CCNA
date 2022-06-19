@@ -24,7 +24,7 @@ h1 {
 
 # Switch Security Configuration
 
-<!-- _footer: CCNA2v7 Module 11 Switch Security Configuration\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 11 Switch Security Configuration\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

@@ -24,7 +24,7 @@ h1 {
 
 # IP Static Routing Configuration and Troubleshooting
 
-<!-- _footer: CCNA2v7 Module 15 IP Static Routing + CCNA2v7 Module 16: Troubleshoot Static and Default Routes\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 15 IP Static Routing + CCNA2v7 Module 16: Troubleshoot Static and Default Routes\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

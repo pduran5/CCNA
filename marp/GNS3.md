@@ -23,7 +23,7 @@ h1 {
 <!-- _paginate: false -->
 
 ![bg 20% center](https://www.gns3.com/assets/custom/gns3/images/logo-colour.png)
-<!-- _footer: 👨🏻‍🏫 Pedro Durán -->
+<!-- _footer: 🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

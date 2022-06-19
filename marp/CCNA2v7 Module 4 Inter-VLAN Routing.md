@@ -24,7 +24,7 @@ h1 {
 
 # Inter-VLAN Routing
 
-<!-- _footer: CCNA2v7 Module 4 Inter-VLAN Routing\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 4 Inter-VLAN Routing\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

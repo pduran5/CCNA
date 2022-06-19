@@ -24,7 +24,7 @@ h1 {
 
 # ICMP
 
-<!-- _footer: "CCNA1v7 Module 13 ICMP\nPedro Durán" -->
+<!-- _footer: 📕 CCNA1v7 Module 13 ICMP\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

@@ -24,7 +24,7 @@ h1 {
 
 # Spanning Tree Protocol (STP)
 
-<!-- _footer: CCNA2v7 Module 5 STP Concepts + CCNA3v6 Chapter 3 STP\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 5 STP Concepts + CCNA3v6 Chapter 3 STP\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

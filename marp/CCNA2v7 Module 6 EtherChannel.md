@@ -24,7 +24,7 @@ h1 {
 
 # EtherChannel
 
-<!-- _footer: CCNA2v7 Module 6 EtherChannel\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 6 EtherChannel\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

@@ -24,7 +24,7 @@ h1 {
 
 # LAN Security Concepts
 
-<!-- _footer: CCNA2v7 Module 10 LAN Security Concepts\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 10 LAN Security Concepts\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

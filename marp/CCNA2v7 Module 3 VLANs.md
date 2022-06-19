@@ -24,7 +24,7 @@ h1 {
 
 # VLANs
 
-<!-- _footer: CCNA2v7 Module 3 VLANs + CCNA3v6 Chapter 2 Scaling VLANs\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 3 VLANs + CCNA3v6 Chapter 2 Scaling VLANs\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

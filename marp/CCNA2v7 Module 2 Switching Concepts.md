@@ -24,7 +24,7 @@ h1 {
 
 # Switching Concepts
 
-<!-- _footer: CCNA2v7 Module 2 Switching Concepts\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 2 Switching Concepts\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 <!-- _header: "Frame Forwarding" -->

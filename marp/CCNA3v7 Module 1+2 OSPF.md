@@ -24,7 +24,7 @@ h1 {
 
 # OSPF
 
-<!-- _footer: CCNA2v7 Module 1 OSPF Concepts + Module 2 Single-Area OSPFv2 Configuration\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 1 OSPF Concepts + Module 2 Single-Area OSPFv2 Configuration\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

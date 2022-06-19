@@ -24,7 +24,7 @@ h1 {
 
 # ACL Concepts and Configuration
 
-<!-- _footer: CCNA3v7 Module 4 ACL Concepts + CCNA3v7 Module 5: ACLs for IPv4 Configuration\nPedro Durán -->
+<!-- _footer: 📕 CCNA3v7 Module 4 ACL Concepts + CCNA3v7 Module 5: ACLs for IPv4 Configuration\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

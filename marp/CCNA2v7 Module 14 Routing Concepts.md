@@ -24,7 +24,7 @@ h1 {
 
 # Routing Concepts
 
-<!-- _footer: CCNA2v7 Module 14 Routing Concepts\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 14 Routing Concepts\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

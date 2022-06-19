@@ -24,7 +24,7 @@ h1 {
 
 # DHCPv4 + SLAAC and DHCPv6
 
-<!-- _footer: CCNA2v7 Module 7 DHCPv4 +  CCNA2v7 Module 8 SLAAC and DHCPv6\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 7 DHCPv4 +  CCNA2v7 Module 8 SLAAC and DHCPv6\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 

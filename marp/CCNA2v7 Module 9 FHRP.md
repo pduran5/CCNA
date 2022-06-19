@@ -24,7 +24,7 @@ h1 {
 
 # FHRP
 
-<!-- _footer: CCNA2v7 Module 9 FHRP Concepts\nPedro Durán -->
+<!-- _footer: 📕 CCNA2v7 Module 9 FHRP Concepts\n🧑🏻‍🏫 Pedro Durán -->
 
 ---
 
