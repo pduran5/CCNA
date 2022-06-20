@@ -53,6 +53,8 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 - **Translation**
   Network Address Translation 64 (NAT64) allows IPv6-enabled devices to communicate with IPv4-enabled devices using a translation technique similar to NAT for IPv4
 
+<!-- _footer: 📝 12.1.3 -->
+
 ---
 
 # IPv6 Addressing Format
@@ -60,7 +62,7 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 - **Length:** 128 bits
 - **Representation:** Hexadecimal
 - **Format: `xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx:xxxx`**
-- **IPv6 -> 8 hextets**
+- **IPv6 ➡️ 8 hextets**
   1 hextet = 16 bit segment = 4 hexadecimal values
 
 > **Example:**
@@ -70,19 +72,21 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 
 # IPv6 Compression
 
-## Rule 1 – Omit Hextets Leading Zero
+## Rule 1️⃣ – Omit Hextets Leading Zero
 
 > **Example:**
 > Preferred: `2001:0db8:0000:1111:0000:0000:0000:0200`
 > No leading zeros: `2001:db8:0:1111:0:0:0:200`
 
-## Rule 2. Replace contiguous zero hextets with ::
+## Rule 2️⃣. Replace contiguous zero hextets with ::
 
 :warning: **We can only use `::` once!**
 
 > **Example:**
 > No leading zeros: `2001:db8:0:1111:0:0:0:200`
 > Compressed: `2001:db8:0:1111::200`
+
+<!-- _footer: 📝 12.2.4 -->
 
 ---
 
@@ -133,6 +137,9 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 - Every IPv6-enabled network interface must have an LLA.
 - **If an LLA is not configured manually on an interface, the device will automatically create one.**
 - **Static LLA on a Router:** `ipv6 address fe80::1/64 link-local`
+
+<!-- _footer: 📝 12.3.8 -->
+
 ---
 
 <!-- _header: "IPv6 Unicast Adresses" -->
@@ -145,15 +152,15 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
   - **Router Advertisement (RA) messages**
     - Sent by routers to inform hosts on how to obtain an IPv6 GUA/LLA.
   - 3 methods for configuring IPv6 GUA:
-    - SLAAC
-    - SLAAC with Stateless DHCPv6 server
-    - Stateful DHCPv6 (no SLAAC)
+    1️⃣ SLAAC
+    2️⃣ SLAAC with Stateless DHCPv6 server
+    3️⃣ Stateful DHCPv6 (no SLAAC)
 
 ---
 
 <!-- _header: "IPv6 Unicast Adresses > Dynamic Addressing for IPv6 GUAs" -->
 
-## Method 1: SLAAC
+## Method 1️⃣: SLAAC
 - Devices configure a GUA without the services of DHCPv6, obtaining the necessary information from the ICMPv6 RA messages of the local router.
 - **Prefix:** provided by the RA message
 - **Interface ID:** created by the device using one of these 2 methods:
@@ -166,7 +173,7 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 
 <!-- _header: "IPv6 Unicast Adresses > Dynamic Addressing for IPv6 GUAs" -->
 
-## Method 2: SLAAC with Stateless DHCPv6 server
+## Method 2️⃣: SLAAC with Stateless DHCPv6 server
 - **IPv6 GUA:** SLAAC
 - **Default gateway:** Router LLA (RA source IPv6 address)
 - **DNS Server and domain name:** obtained from an stateless DHCPv6 server
@@ -177,7 +184,7 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 
 <!-- _header: "IPv6 Unicast Adresses > Dynamic Addressing for IPv6 GUAs" -->
 
-## Method 3: Stateful DHCPv6
+## Method 3️⃣: Stateful DHCPv6
 - Similar to DHCPv4
 - **IPv6 GUA, prefix length, DNS server and domain:** From Stateful DHCPv6 server
 - **Default gateway:** Router LLA (RA source IPv6 address)
@@ -207,6 +214,8 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 - **Interface ID:** Random number
 
 :warning: Client may use DAD (Duplicate Address Detection) to ensure the uniqueness of the generated IPv6. No reply => unique.
+
+<!-- _footer: 📝 12.5.8 -->
 
 ---
 
@@ -250,3 +259,5 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 ![bg w:500 right:40%](img/ipv6subnetting2.png)
 
 ![h:140 center](img/ipv6subnetting.png)
+
+<!-- _footer: 📝 12.8.5 -->

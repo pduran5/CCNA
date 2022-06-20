@@ -153,4 +153,4 @@ Switch(config-if)# ip address 192.168.1.20 255.255.255.0
 Switch(config-if)# no shutdown
 ```
 
-<!-- _footer: 📝 2.9.4 -->
+<!-- _footer: 📝 2.6.3 + 2.9.4 -->

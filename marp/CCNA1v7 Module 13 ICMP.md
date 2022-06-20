@@ -81,6 +81,8 @@ Neighbor Discovery Protocol (NDP) messages:
   - Device sends NS message to solicited node address.
   - Targeted device ➡️ Responds NA message with MAC address.
 
+<!-- _footer: 📝 13.1.6 -->
+
 ---
 
 # Test connectivity - Ping
@@ -104,3 +106,5 @@ Neighbor Discovery Protocol (NDP) messages:
   - 1st message:   TTL=1 ➡️ 1st router responds with Time Exceeded message
   - 2nd message: TTL=2 ➡️ 2nd router responds with Time Exceeded message
   - ...
+
+<!-- _footer: 📝 13.3.4 -->
