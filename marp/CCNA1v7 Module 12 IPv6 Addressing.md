@@ -78,7 +78,7 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 > Preferred: `2001:0db8:0000:1111:0000:0000:0000:0200`
 > No leading zeros: `2001:db8:0:1111:0:0:0:200`
 
-## Rule 2️⃣. Replace contiguous zero hextets with ::
+## Rule 2️⃣ – Replace contiguous zero hextets with ::
 
 :warning: **We can only use `::` once!**
 
@@ -197,9 +197,10 @@ The development of IPv6 also included fixes for IPv4 limitations and other enhan
 
 ## Auto Generated Interface ID: EUI-64 Process
 - Used by Linux and CISCO devices
-- Split Ethernet MAC address of the client (48bits): OUI <--> Serial Number
-- Insert `ff:fe` into the middle (64bits)
-- Reverse from binary 0 to 1 the 7th bit
+
+1️⃣ Split Ethernet MAC address of the client (48bits): OUI ↔️ Serial Number
+2️⃣ Insert `ff:fe` into the middle (64bits)
+3️⃣ Reverse from binary 0 to 1 the 7th bit
 
 > **Example:**
 > MAC: `fc:99:47:75:ce:e0`
