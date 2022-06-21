@@ -49,7 +49,7 @@ h1 {
 ---
 
 ## R1 - IPv4 and IPv6 Next-Hop Static Routes
-```
+```csharp
 R1(config)# ip route 172.16.1.0 255.255.255.0 172.16.2.2 
 R1(config)# ip route 192.168.1.0 255.255.255.0 172.16.2.2 
 R1(config)# ip route 192.168.2.0 255.255.255.0 172.16.2.2
@@ -60,7 +60,7 @@ R1(config)# ipv6 route 2001:db8:cafe:2::/64 2001:db8:acad:2::2
 ```
 
 ## R1 - IPv4 and IPv6 Directly Connected Static Route
-```
+```csharp
 R1(config)# ip route 172.16.1.0 255.255.255.0 s0/1/0 
 R1(config)# ip route 192.168.1.0 255.255.255.0 s0/1/0 
 R1(config)# ip route 192.168.2.0 255.255.255.0 s0/1/0
@@ -73,7 +73,7 @@ R1(config)# ipv6 route 2001:db8:cafe:2::/64 s0/1/0
 ---
 
 ## R1 - IPv4 and IPv6 Fully Specified Static Route
-```
+```csharp
 R1(config)# ip route 172.16.1.0 255.255.255.0 s0/1/0 172.16.2.2
 R1(config)# ip route 192.168.1.0 255.255.255.0 s0/1/0 172.16.2.2
 R1(config)# ip route 192.168.2.0 255.255.255.0 s0/1/0 172.16.2.2
@@ -85,7 +85,7 @@ R1# show ipv6 route
 ```
 
 ## R1 - IPv4 and IPv6 Default Static Routes
-```
+```csharp
 R1(config)# ip route 0.0.0.0 0.0.0.0 172.16.2.2
 R1(config)# ipv6 route ::/0 2001:db8:acad:2::2
 R1# show ip route static
@@ -94,7 +94,7 @@ R1# show ipv6 route static
 ---
 
 ## R1 - IPv4 and IPv6 Floating Static Routes
-```
+```csharp
 R1(config)# ip route 0.0.0.0 0.0.0.0 172.16.2.2 
 R1(config)# ip route 0.0.0.0 0.0.0.0 10.10.10.2 5 
 R1(config)# ipv6 route ::/0 2001:db8:acad:2::2 
@@ -102,7 +102,7 @@ R1(config)# ipv6 route ::/0 2001:db8:feed:10::2 5
 ```
 
 ## R1 - IPv4 and IPv6 Static Host Routes
-```
+```csharp
 Branch(config)# ip route 209.165.200.238 255.255.255.255 198.51.100.2
 Branch(config)# ipv6 route 2001:db8:acad:2::238/128 2001:db8:acad:1::2
 Branch(config)# ipv6 route 2001:db8:acad:2::238/128 s0/1/0 fe80::2
