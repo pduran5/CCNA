@@ -28,12 +28,15 @@ h1 {
 
 ---
 
+# Decimal - Binary - Hexadecimal
+
+![center](img/decbinhex.png)
+
+---
+
 # Binary to decimal conversion
 
 ![w:700 center](img/binarytodecimal.png)
-
-
-<!-- _footer: 📝 4.1.3 -->
 
 ---
 
@@ -43,6 +46,8 @@ h1 {
 
 ---
 
-# Binary to hexadecimal conversion
+# Binary to hexadecimal conversion and viceversa
 
 ![w:700 center](img/binarytohexadecimal.jpg)
+
+<!-- _footer: 📝 5.2.5 + 5.3.2 -->
