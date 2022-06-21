@@ -32,10 +32,8 @@ h1 {
 
 - **Host**: every computer in a network
   - **Server**: computers that provide information to end devices (email server, web server, ftp server)
-  ![](img/server.svg)
   
   - **Clients**: computers that send requests to the servers to retrieve information (email from an email server, web page from a web server)
-  ![](img/client.svg)
 
 - **Peer-to-peer**: Network design only recommended for very small network where the same device acts as a client and as a server.
 
