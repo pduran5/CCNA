@@ -108,7 +108,7 @@ When a router has 2 or more paths to a destination with equal cost metrics, then
 
 # Structure of an IPv4 Routing Table
 
-```
+```csharp
 Parent route (Classful network address of this subnet)
    Child route (Indented, Route source and all the forwarding info)
 ```
@@ -132,7 +132,7 @@ O    192.168.23.0 [110/128] via 192.168.10.6, 00:02:39, Serial0/0/1
 ---
 
 # Administrative distance
-```
+```csharp
 Route Source         Administrative Distance
 -------------------  -----------------------
 Directly connected            0 
