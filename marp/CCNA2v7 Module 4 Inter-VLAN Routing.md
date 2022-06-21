@@ -31,13 +31,13 @@ h1 {
 # Inter-VLAN Routing
 - Process of forwarding network traffic from one VLAN to another VLAN.
 - **3 options:**
-  1️⃣ **Legacy Inter-VLAN Routing**: Legacy. Does not scale well.
+  1️⃣ 🪦 **Legacy Inter-VLAN Routing**: Legacy. Does not scale well.
   2️⃣ ⭐ **Router-on-a-Stick (RoaS)**: Acceptable for small to medium-sized network.
   3️⃣ ⭐ **Inter-VLAN Routing on a Layer 3 Switch**: Most scalable solution for medium to large organizations.
 
 ---
 
-# 1️⃣ Legacy Inter-VLAN Routing
+# 1️⃣ 🪦 Legacy Inter-VLAN Routing
 
 - Using a **Router** requiring **1 physical interface per VLAN**.
 - **Limitation:** Routers have a limited number of interfaces.
@@ -50,7 +50,7 @@ h1 {
 # 2️⃣ ⭐ Router-on-a-Stick Inter-VLAN Routing (RoaS)
 
 - **Only requires 1 physical interface** to route traffic between multiple VLANs.
-- Router (trunk port) > Link > Switch (trunk port)
+- Router (trunk port) ➡️ Link ➡️ Switch (trunk port)
 - Using **software-based subinterfaces** to identify routable VLANs.
   - Each subinterface configured for each VLAN.
 - **Limitation:** does not scale beyond 50 VLANs.
@@ -59,7 +59,7 @@ h1 {
 
 # 2️⃣ RoaS Configuration (S1/S2)
 
-```
+```csharp
 S2(config)# vlan 10
 S2(config-vlan)# name LAN10
 S2(config-vlan)# vlan 20
@@ -83,7 +83,7 @@ S2(config-if)# no shutdown
 
 # 2️⃣ RoaS Configuration (R1)
 
-```
+```csharp
 R1(config)# interface g0/0/1.10
 R1(config-subif)# description Default gw for VLAN 10
 R1(config-subif)# encapsulation dot1q 10
@@ -125,7 +125,7 @@ R1(config-if)# no shutdown
 
 # 3️⃣ L3 Switch Routing Config
 
-```
+```csharp
 D1(config)# vlan 10
 D1(config-vlan)# name LAN10
 D1(config-vlan)# vlan 20
