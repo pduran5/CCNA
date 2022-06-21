@@ -83,23 +83,22 @@ All MAC addresses must be unique to the Ethernet device or Ethernet interface.
 Switch makes its forwarding decisions based on the Layer 2 Ethernet MAC addresses.
 
 1️⃣ **LEARN.** Frame enters switch. Switch examines frame **Source MAC address**
-  - Source MAC address unkwown ➡️ Adds Source MAC to table with incoming port
-  - Source MAC address known ➡️ Refresh timer for that entry (default: 5 min)
+🤔 Source MAC address unkwown ➡️ Adds Source MAC to table with incoming port
+🤔 Source MAC address known ➡️ Refresh timer for that entry (default: 5 min)
 
 2️⃣ **FORWARD.** Find the Destination MAC Address
-  - Destination is Unicast?
-    - Destination MAC known ➡️ Forwards out the specified port
-    - Destination MAC unknown ➡️ Forwards out all ports except incoming port
-  - Destination is Multicast or Broadcast? ➡️ Forwards out all ports except incoming port
+🤔 Destination is Unicast MAC known ➡️ Forwards out the specified port
+🤔 Destination is Unicast MAC unknown ➡️ Forwards out all ports except incoming port
+🤔 Destination is Multicast or Broadcast? ➡️ Forwards out all ports except incoming port
 
 ---
 
 # Frame Forwarding Methods on Cisco Switches
 
 - **Store-and-forward switching:**
-  - Receives the entire frame and computes the CRC.
-    - CRC valid? ➡️ Forwards frame
-    - CRC invalid? ➡️ Discards frame
+Receives the entire frame and computes the CRC.
+🤔 CRC valid? ➡️ Forwards frame
+🤔 CRC invalid? ➡️ Discards frame
 - **Cut-through switching:**
   - **Fast-forward switching:** forwards after reading the destination address.
   - **Fragment-free switching:** switch stores and performs an error check on the first 64 bytes of the frame before forwarding.
