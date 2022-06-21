@@ -32,7 +32,7 @@ h1 {
 
 **EtherChannel**: Allows you to combine multiple physical interfaces into one logical interface, which increases performance while maintaining redundancy.
  - Provides fault-tolerance, load sharing, increase bandwith and redundancy.
- - Also known as Port Aggregation (PAgP), Link Aggregation (LACP), channel bonding, or multi-linking.
+ - Also known as **Port Aggregation (PAgP)**, **Link Aggregation (LACP)**, **channel bonding**, or multi-linking.
 
 **Port channel**: Logical interface which operates at the speed of the combined physical interfaces.
 
@@ -44,9 +44,9 @@ h1 {
 - Configuration consistency throughout the links (same config).
 - No need to upgrade the link to have more bandwith.
 - Load balancing between links
-- Provides redundancy (one physical link failing does not create a change in topology).
+- Provides redundancy (1 physical link failing does not create a change in topology).
 # Restrictions
-- Interface types cannot be mixed (FastEthernet <> GigabitEthernet).
+- Interface types cannot be mixed (FastEthernet ↔️ GigabitEthernet).
 - Up to 8 Ethernet ports (800 Mbps or 8 Gbps). Cisco 2960 up to 6 EtherChannels
 - Individual EtherChannel group member port config must be consistent on both sides (L2 ports, if it's a trunk ➡️ same native VLAN)
 
@@ -80,7 +80,7 @@ h1 {
 # LACP Configuration Example
 
 ![center w:800](img/lacp.png)
-```
+```csharp
 S1(config)# interface range f0/1-2
 S1(config-if-range)# channel-group 1 mode active
 S1(config-if-range)# port-channel interface Port-channel 1
