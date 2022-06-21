@@ -31,16 +31,19 @@ h1 {
 
 # Switch Boot Sequence
 
-1. **Loads a POST** (power-on self-test) program stored in ROM. Checks CPU, DRAM, flash
-2. **Loads the boot loader** software (stored in ROM)
-3. Boot loader performs **low-level CPU initialization** (CPU registers)
-4. Boot loader **initializes the flash file system**
-5. Boot loader locates and **loads a default IOS**
-   - BOOT variable set in `startup-config` -> `flash:/config.text`
+1️⃣ **Loads a POST** (power-on self-test) program stored in ROM. Checks CPU, DRAM, flash
+
+2️⃣ **Loads the boot loader** software (stored in ROM)
+
+3️⃣ Boot loader performs **low-level CPU initialization** (CPU registers)
+
+4️⃣ Boot loader **initializes the flash file system**
+
+5️⃣ Boot loader locates and **loads a default IOS**
+   - 🤔 BOOT variable set in `startup-config` ➡️ `flash:/config.text`
      - Loads that IOS. To set an IOS:
    `S1(config)# boot system flash:/folder/iosfile.bin`
-   - BOOT variable not set:
-     - Attempts to load the 1st executable file it can find
+   - 🤔 BOOT variable not set ➡️ Attempts to load the 1st executable file it can find
 
 
 ---
@@ -118,23 +121,29 @@ h1 {
 
 # Recovery from a System Crash
 
-1. **Connect a PC by console cable to the switch console port using PuTTY**.
-2. **Unplug the switch power cord**.
-3. **Reconnect the power** cord to the switch and, **within 15 seconds**, **press and hold down the Mode button** while the System LED is still flashing green (🟢 🟢 🟢).
-4. **Continue pressing the Mode button** until the System LED turns briefly amber (🟠) and then **solid green** (🟢); then **release the Mode button.**
-5. The boot loader `switch:` prompt appears in PuTTY on the PC.
-> The boot loader command line supports commands to format the flash file system, reinstall the operating system software, and recover a lost or forgotten password.
+1️⃣ **Connect a PC by console cable to the switch console port using PuTTY**.
+
+2️⃣ **Unplug the switch power cord**.
+
+3️⃣ **Reconnect the power** cord to the switch and, **within 15 seconds**, **press and hold down the Mode button** while the System LED is still flashing green (🟢 🟢 🟢).
+
+4️⃣ **Continue pressing the Mode button** until the System LED turns briefly amber (🟠) and then **solid green** (🟢); then **release the Mode button.**
+
+5️⃣ The boot loader `switch:` prompt appears in PuTTY on the PC.
+> Boot loader command line supports commands to format the flash file system, reinstall the operating system software, and recover a lost or forgotten password.
 
 ---
 
 <!-- _header: "Configure a Switch with Initial Settings" -->
 
 # Switch Management Access
-1. **Configure the Management Interface**
+1️⃣ **Configure the Management Interface**
    - **VLAN 1** or **VLAN 99** for security purposes
-2. **Configure the Default Gateway**
-3. **Verify Configuration**
-```
+
+2️⃣ **Configure the Default Gateway**
+
+3️⃣ **Verify Configuration**
+```csharp
 S1# configure terminal
 S1(config)# interface vlan 99
 S1(config-if)# ip address 172.17.99.11 255.255.255.0
@@ -152,7 +161,7 @@ S1# show ipv6 interface brief
 
 # Duplex Communication
 
-```
+```csharp
 S1# configure terminal
 S1(config)# interface f0/1
 S1(config-if)# duplex full
@@ -163,7 +172,7 @@ S1(config-if)# speed 100
 
 Automatic Medium-Dependent Interface Crossover. **Enabled by default Cisco 2960+**
 
-```
+```csharp
 S1# configure terminal
 S1(config)# interface f0/1
 S1(config-if)# duplex auto
@@ -175,7 +184,7 @@ S1(config-if)# mdix auto
 
 # Switch Verification Commands
 
-```
+```csharp
 S1# show interfaces [interface-id]
 S1# show startup-config
 S1# show running-config
@@ -200,7 +209,7 @@ S1# show mac address-table
 
 # Configure SSH Remote Access
 
-```
+```csharp
 S1# show ip ssh
 S1# configure terminal
 S1(config)# ip ssh version 2
@@ -212,11 +221,15 @@ S1(config-line)# transport input ssh
 S1(config-line)# login local
 ```
 
-Delete RSA key pairs: `S1(config)# crypto key zeroize rsa`
+Delete RSA key pairs: 
+```csharp
+S1(config)# crypto key zeroize rsa
+```
 
 SSH Linux connection:
-`
-ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc -l admin 192.168.99.2`
+```csharp
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc -l admin 192.168.99.2
+```
 
 
 ---
@@ -225,7 +238,7 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa -c 
 
 # Configure Basic Router Settings
 
-```
+```csharp
 Router# configure terminal
 Router(config)# hostname R1
 R1(config)# enable secret class
@@ -248,7 +261,7 @@ R1(config)# do wr
 # Dual Stack Topology - Configure Router Interfaces
 
 ![center](img/dualstack.png)
-```
+```csharp
 R1(config)# interface g0/0/0
 R1(config-if)# description Link to LAN 1
 R1(config-if)# ip address 192.168.10.1 255.255.255.0
@@ -260,7 +273,7 @@ R1(config-if)# no shutdown
 
 # Router Verification Commands
 
-```
+```csharp
 R1# show ip interface brief
 R1# show ipv6 interface brief
 R1# show running-config interface interface-id
@@ -271,6 +284,3 @@ R1# show ip route
 R1# show ipv6 route
 R1# show history
 ```
-
----
-
