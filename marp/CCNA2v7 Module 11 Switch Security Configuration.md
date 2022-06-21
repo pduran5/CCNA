@@ -33,14 +33,14 @@ h1 {
 - Secure switch ports ➡️ **Disable all unused ports!!!** `interface range` and `no shutdown`
 - Prevent MAC address table overflow ➡️ **Enable port security** (limits the number of valid MAC addresses allowed on a port).
   - Can only be configured on manually access or trunk ports.
-```
+```csharp
 S1(config)# interface f0/1
 S1(config-if)# switchport mode access
 S1(config-if)# switchport port-security
 S1# show port-security interface f0/1
 ```
 - Set the maximum number of MAC addresses allowed on a port:
-```
+```csharp
 S1(config-if)# switchport port-security maximum 2
 ```
 
@@ -49,7 +49,7 @@ S1(config-if)# switchport port-security maximum 2
 # Learn MAC Addresses modes
 
 1️⃣ **Manually Configured**
-```
+```csharp
 S1(config-if)# switchport port-security mac-address cafe.caca.baba
 ```
 
@@ -57,7 +57,7 @@ S1(config-if)# switchport port-security mac-address cafe.caca.baba
 `switchport port-security` command ➡️ current source MAC secured but NOT added to `running-config` (config lost!)
 
 3️⃣ **Dynamically Learned - Sticky**
-```
+```csharp
 S1(config-if)# switchport port-security mac-address sticky
 ```
 Learn MAC address and stick them to `running-config` (`wr` to commit changes).
@@ -69,7 +69,7 @@ Learn MAC address and stick them to `running-config` (`wr` to commit changes).
 - Manually configure one secure MAC address
 - Configure the port to dynamically learn additional secure MAC addresses up to the 4 secure MAC address maximum.
 
-```
+```csharp
 S1(config)# interface f0/1
 S1(config-if)# switchport mode access
 S1(config-if)# switchport port-security
@@ -87,21 +87,21 @@ S1# show port-security
 Set the aging time for static and dynamic secure addresses on a port:
 - **Absolute**: Secured addresses deleted after specified aging time (minutes).
 
-```
+```csharp
 S1(config-if)# switchport port-security aging time 10
 S1(config-if)# switchport port-security aging type absolute
 ```
 
 - **Inactivity**: Secured addresses deleted if they are inactive for a specified time.
 
-```
+```csharp
 S1(config-if)# switchport port-security aging time 10
 S1(config-if)# switchport port-security aging type inactivity
 ```
 
 
 Enable / disable static aging for the secured port:
-```
+```csharp
 S1(config-if)# switchport port-security aging static
 ```
 
@@ -112,18 +112,17 @@ S1(config-if)# switchport port-security aging static
 MAC address differs from list of secured addresses ➡️ Port violation (`err-disabled`)
 
 - **shutdown** (default): ❌`err-disabled` immediately + LED off + 📨sends syslog + 💦increments violation counter. Re-enable: `shutdown`and `no shutdown`
-```
+```csharp
 S1(config-if)# switchport port-security violation shutdown
 ```
 
 - **restrict**: port drops packets with unknown source address until removed below the maximum allowed. 💦 increments violation counter + 📨sends syslog
-```
+```csharp
 S1(config-if)# switchport port-security violation restrict
 ```
 
-
 - **protect**: port drops packets with unknown source address until removed below the maximum allowed.
-```
+```csharp
 S1(config-if)# switchport port-security violation protect
 ```
 
@@ -132,18 +131,20 @@ S1(config-if)# switchport port-security violation protect
 # Mitigate VLAN attacks
 
 1️⃣ **Disable DTP on non-trunking ports**
-```
+```csharp
 S1(config)# interface f0/1 - 16
 S1(config-if-range)# switchport mode access
 ```
+
 2️⃣ **Disable unused ports and put them in an unused VLAN**
-```
+```csharp
 S1(config)# interface f0/17 - 20
 S1(config-if-range)# switchport mode access
 S1(config-if-range)# switchport access vlan 1000
 ```
+
 **3️⃣ Manually enable trunks + 4️⃣ Disable DTP on trunking ports + 5️⃣ Set the native VLAN to a VLAN other than VLAN 1**
-```
+```csharp
 S1(config)# interface f0/21 - 24
 S1(config-if-range)# switchport mode trunk
 S1(config-if-range)# switchport nonegotiate
@@ -170,11 +171,12 @@ S1(config-if-range)# switchport trunk native vlan 999
 ![](img/dhcpsnooping.png)
 
 1️⃣ **Enable DHCP snooping**
-```
+```csharp
 S1(config)# ip dhcp snooping
 ```
+
 2️⃣ **On trusted ports**
-```
+```csharp
 S1(config)# interface f0/1
 S1(config-if)# ip dhcp snooping trust
 ```
@@ -187,12 +189,13 @@ S1(config-if)# ip dhcp snooping trust
 ![](img/dhcpsnooping.png)
 
 3️⃣ On untrusted interfaces, **limit the number of DHCP discovery messages received (packets/second)**
-```
+```csharp
 S1(config)# interface range f0/5 - 24
 S1(config-if)# ip dhcp snooping limit rate 6
 ```
+
 4️⃣ **Enable DHCP snooping by VLAN**
-```
+```csharp
 S1(config)# ip dhcp snooping vlan 5,10,50-52
 S1# show ip dhcp snooping
 S1# show ip dhcp snooping binding
@@ -221,22 +224,22 @@ All uplink ports that are connected to other switches: 🟢 trusted
 ![bg 85% right:40%](img/dai.png)
 
 1️⃣ **Enable DHCP snooping globally**
-```
+```csharp
 S1(config)# ip dhcp snooping
 ```
 
 2️⃣ **Enable DHCP snooping on selected VLANs**
-```
+```csharp
 S1(config)# ip dhcp snooping vlan 10
 ```
 
 3️⃣ **Enable DAI on selected VLANs**
-```
+```csharp
 S1(config)# ip arp inspection vlan 10
 ```
 
 4️⃣ **Configure trusted interfaces**
-```
+```csharp
 S1(config)# interface f0/24
 S1(config-if)# ip dhcp snooping trust
 S1(config-if)# ip arp inspection trust
@@ -249,13 +252,13 @@ S1(config-if)# ip arp inspection trust
 - **PortFast**: brings a port to the <span style="color:green">FWD</span> state from a <span style="color:red">BLK</span> state (bypassing listening and learning states). 
   - ⚠️ Apply to all end-user access ports
   - On a **interface**
-  ```
+  ```csharp
   S1(config)# interface f0/1
   S1(config-if)# switchport mode access
   S1(config-if)# spanning-tree portfast
   ```
   - **Globally**
-  ```
+  ```csharp
   S1(config)# spanning-tree portfast default
   ```
 
@@ -266,16 +269,16 @@ S1(config-if)# ip arp inspection trust
 - **BPDU Guard**: `err-disabled` a port that receives a BPDU
   - ⚠️ Apply to all end-user access ports
   - Automatically re-enable port:
-  ```
+  ```csharp
   S1(config)# errdisable recovery cause psecure_violation
   ```
   - On a **interface**
-  ```
+  ```csharp
   S1(config)# interface f0/1
   S1(config-if)# spanning-tree bpduguard enable
   ```
   - **Globally**
-  ```
+  ```csharp
   S1(config)# spanning-tree portfast bpduguard default
   S1(config)# end
   S1# show spanning-tree summary
