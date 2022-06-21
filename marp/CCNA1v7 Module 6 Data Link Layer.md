@@ -74,15 +74,13 @@ At each hop along the path, a router performs four basic Layer 2 functions:
 
 # Access Control Methods
 
-**Contention-based access:**
-All nodes operating in half-duplex, competing for use of the medium.
+**Contention-based access:** All nodes operating in half-duplex, competing for medium.
   - **Carrier Sense Multiple Access with Collision Detection (CSMA/CD)**
     - **Half-duplex. Use:** Legacy bus-topology Ethernet LANs. Devices detect the collission and wait a period of time and retransmit data.
-  - **Carrier Sense multiple access with collision avoidance (CSMA/CA)**
+  - **Carrier Sense Multiple Access with Collision Avoidance (CSMA/CA)**
     - **Half-duplex. Use:** WLAN. Devices when transmitting include the time duration needed for the transmission. Other devices know how long the medium is unavailable.
 
-**Controlled access:**
-Deterministic access where each node has its own time on the medium. Used on legacy networks such as Token Ring and ARCNET.
+**Controlled access:** Deterministic access where each node has its own time on the medium. Used on legacy networks such as Token Ring and ARCNET.
 
 <!-- _footer: 📝 6.2.9 -->
 
