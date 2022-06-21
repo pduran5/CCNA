@@ -34,8 +34,8 @@ h1 {
     - **Last ACE statement** ➡️ implicit **deny** that blocks all traffic.
 - **Types of ACLs**: Standard / Extended
 - **ACL Operation**:
-  - **Inbound**: filters packets before they are routed to the outbound interface
-  - **Outbound**: filters packets after being routed
+  - ⤵️ **Inbound**: filters packets before they are routed to the outbound interface
+  - ⤴️ **Outbound**: filters packets after being routed
 > **⚠️ ACLs do not act on packets that originate from the router itself.**
 
 - Limited Number of ACLs per Interface: 4 
@@ -68,7 +68,7 @@ h1 {
 ---
 
 # Numbered Standard ACLs: 1-99, 1300-1999
-```
+```csharp
 R1(config)# access-list 10 remark ACE permits ONLY host 192.168.10.10 to the internet
 R1(config)# access-list 10 host 192.168.10.10
 R1(config)# do show access-lists
@@ -86,7 +86,7 @@ R1(config-if)# ip access-group 10 out
 ---
 
 # Named Standard ACLs (preferred)
-```
+```csharp
 R1(config)# no access-list 10
 R1(config)# ip access-list standard PERMIT-ACCESS
 R1(config-std-nacl)# remark ACE permits host 192.168.10.10
@@ -114,17 +114,17 @@ R1# show ip int s0/1/0 | include access list
 # <!--fit--> **Numbered ACL that denies host 192.168.10.10 but permits all other hosts in LAN 1**
 
 1️⃣ Configure the ACL 20 ACE that denies the 192.168.10.10 host:
-```
+```csharp
 R1(config)#access-list 20 deny host 192.168.10.10
 ```
 
 2️⃣ Create a numbered ACL 20 ACE that permits all other hosts in LAN 1 on network 192.168.10.0/24.
-```
+```csharp
 R1(config)#access-list 20 permit 192.168.10.0 0.0.0.255
 ```
 
 3️⃣ Because the ACL 20 policies only apply to traffic from the LAN 1, the ACL would be best applied incoming to the G0/0/0 R1 interface.
-```
+```csharp
 R1(config)#interface g0/0/0
 R1(config-if)#ip access-group 20 in
 ```
@@ -133,22 +133,22 @@ R1(config-if)#ip access-group 20 in
 # <!--fit--> **Named ACL that permits host 192.168.10.10 but denies all other hosts access to LAN 2**
 
 1️⃣ Configure a named standard ACL called LAN2-FILTER.
-```
+```csharp
 R1(config)#ip access-list standard LAN2-FILTER
 ```
 
 2️⃣ Create an ACE that permits host 192.168.10.10
-```
+```csharp
 R1(config-std-nacl)#permit host 192.168.10.10
 ```
 
 3️⃣ Deny all other hosts using the any keyword.
-```
+```csharp
 R1(config-std-nacl)#deny any
 ```
 
 4️⃣ The LAN2-FILTER would be best applied outgoing to LAN 2.
-```
+```csharp
 R1(config)#interface g0/0/1
 R1(config-if)#ip access-group LAN2-FILTER out
 ```
@@ -157,7 +157,7 @@ R1(config-if)#ip access-group LAN2-FILTER out
 
 # Modify a Named Standard IPv4 ACL Example
 
-```
+```csharp
 R1# show access-lists
 Standard IP access list NO-ACCESS
     10 deny   192.168.10.10
@@ -177,7 +177,7 @@ Standard IP access list NO-ACCESS
 
 # Modify a Numbered Standard IPv4 ACL Example
 
-```
+```csharp
 R1#show access-lists
 Standard IP access list 1
     10 deny   19.168.10.10
@@ -201,7 +201,7 @@ Standard IP access list 1
 
 ---
 
-```
+```csharp
 R1(config)# username ADMIN secret class
 R1(config)# ip access-list standard ADMIN-HOST
 R1(config-std-nacl)# remark This ACL secures incoming vty lines
@@ -228,7 +228,7 @@ R1(config-line)# end
 - Types:
   - Numbered
   - Named
-```
+```csharp
 R1(config)# access-list 100 permit tcp any any eq www
 R1(config)# access-list 100 permit tcp any any eq 80 
 
@@ -242,7 +242,7 @@ R1(config)# access-list 100 permit tcp any any eq 443
 
 ![center w:500](img/extendedacl.png)
 
-```
+```csharp
 R1(config)# access-list 110 permit tcp 192.168.10.0 0.0.0.255 any eq www
 R1(config)# access-list 110 permit tcp 192.168.10.0 0.0.0.255 any eq 443
 R1(config)# interface g0/0/0
@@ -251,7 +251,7 @@ R1(config-if)# ip access-group 110 in
 ---
 # <!--fit--> Named Extended IPv4 ACL Example (and established)
 ![center w:500](img/extendednamed.png)
-```
+```csharp
 R1(config)# ip access-list extended SURFING
 R1(config-ext-nacl)# Remark Permits inside HTTP and HTTPS traffic 
 R1(config-ext-nacl)# permit tcp 192.168.10.0 0.0.0.255 any eq 80
@@ -273,7 +273,7 @@ Extended IP access list BROWSING
 
 # Edit Extended ACLs
 
-```
+```csharp
 R1# show access-lists 
 Extended IP access list BROWSING
     10 permit tcp any 192.168.10.0 0.0.0.255 established 
@@ -297,7 +297,7 @@ Extended IP access list SURFING
 # Another Named Extended IPv4 ACL Example
 ![center w:500](img/namedextendedacl1.png)
 
-```
+```csharp
 R1(config)# ip access-list extended PERMIT-PC1
 R1(config-ext-nacl)# Remark Permit PC1 TCP access to internet 
 R1(config-ext-nacl)# permit tcp host 192.168.10.10 any eq 20
