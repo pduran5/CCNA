@@ -30,7 +30,7 @@ h1 {
 
 # The Data Link Layer
 
-- Encapsulate Layer 3 packets into Layer 2 Frames
+- 🪆 Encapsulate Layer 3 packets into Layer 2 Frames
 - Performs **error detection** and **rejects corrupt frames**
 
 ![w:550 center](img/datalinklayer.png)
