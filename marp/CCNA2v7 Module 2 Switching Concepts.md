@@ -34,13 +34,13 @@ h1 {
 # Switching in Networking
 
 ## Ports Types:
-- **Ingress**: entering the interface
-- **Egress**: exiting the interface
+- ⤵️ **Ingress**: entering the interface
+- ⤴️ **Egress**: exiting the interface
 
 ## Forwarding frames:
-  - **Ingress Interface**
-  - **Destination MAC address** -> Egress
-  - **Using its MAC Address Table** -> Ingress Source MAC Adress
+  - ⤵️ **Ingress Interface**
+  - **Destination MAC address** ➡️ Egress
+  - **Using its MAC Address Table** ➡️ Ingress Source MAC Adress
 
 ---
 
@@ -48,12 +48,13 @@ h1 {
 
 # The Switch Learn and Forward Method
 
-1. **Learn – Examines Source Address**
-   - Adds the source MAC if not in table
-   - Resets the time out setting back to 5 minutes if source is in the table
-2. **Forward – Examines Destination Address**
-   - If the destination MAC is in the MAC address table it is forwarded out the specified port.
-   - If a destination MAC is not in the table, it is flooded out all interfaces except the one it was received.
+1️⃣ **Learn – Examines Source Address**
+   - ✍🏻 Adds the source MAC if not in table
+   - 🕐 Resets the time out setting back to 5 minutes if source is in the table
+
+2️⃣ **Forward – Examines Destination Address**
+   - 🤔 Destination MAC in MAC address table? ➡️ forward out the specified port
+   - 🤔 Destination MAC is not in the table? ➡️ flooded out all interfaces except the one it was received.
 
 ---
 
@@ -68,7 +69,7 @@ h1 {
 
 <!-- _header: "Switch Forwarding Methods" -->
 # Switch Forwarding Methods: Cut-Through
-- **Cut-through**: Forwards frame after Destination MAC.
+- ✂️ **Cut-through**: Forwards frame after Destination MAC.
 - **Fragment Free**: At least 64 bytes. Eliminates runts.
 - **⚠️ Does not check FCS ➡️ It can propagate errors**
 
