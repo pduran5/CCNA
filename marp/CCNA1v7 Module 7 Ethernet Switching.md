@@ -82,8 +82,8 @@ All MAC addresses must be unique to the Ethernet device or Ethernet interface.
 
 Switch makes its forwarding decisions based on the Layer 2 Ethernet MAC addresses.
 
-1️⃣ **LEARN.** Frame enters switch. Switch examines frame source MAC address
-  - Source MAC address unkwown ➡️ Adds source MAC to table with incoming port
+1️⃣ **LEARN.** Frame enters switch. Switch examines frame **Source MAC address**
+  - Source MAC address unkwown ➡️ Adds Source MAC to table with incoming port
   - Source MAC address known ➡️ Refresh timer for that entry (default: 5 min)
 
 2️⃣ **FORWARD.** Find the Destination MAC Address
