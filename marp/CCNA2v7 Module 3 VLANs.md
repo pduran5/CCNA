@@ -46,11 +46,10 @@ h1 {
 
 # Types of VLANs
 
-- **Default VLAN**
-  - **VLAN 1**
-    - Default VLAN, native VLAN and management VLAN
-    - Assigned to all interfaces by default
-    - Cannot be deleted or renamed
+- **Default VLAN**: **VLAN 1**
+  - Default VLAN, native VLAN and management VLAN
+  - Assigned to all interfaces by default
+  - Cannot be deleted or renamed
 - **Data VLAN**: User-generated traffic. Default VLAN 1.
 - **Native VLAN**: Used for trunks links only. Default VLAN 1. Designed for legacy use.
 - **Management VLAN**: Used for SSH/Telnet VTY traffic. Default VLAN 1.
@@ -59,19 +58,19 @@ h1 {
 
 # Types of VLANs
 
-- **Voice VLAN**:
-  - Separated VLAN required
-    - Assured bandwith
-    - High QoS priority
-    - Ability to avoid congestion
-    - Delay < 150 ms
+- 📞 **Voice VLAN**:
+Separated VLAN required
+  - Assured bandwith
+  - High QoS priority
+  - Ability to avoid congestion
+  - Delay < 150 ms
 
 ![bg 80% right:50%](img/voicevlan.png)
 
 ---
 
 # Defining VLAN Trunks
-- **Trunk**:  point-to-point link between 2 network devices that:
+- 🪵 **Trunk**:  point-to-point link between 2 network devices that:
   - Allows more than one VLAN (by default all VLANs)
   - Extend the VLAN across the entire network
   - Support 802.1q trunking
@@ -108,7 +107,7 @@ h1 {
 
 # Data and Voice VLAN Example
 
-```
+```csharp
 S3# configure terminal
 S3(config)# vlan 20
 S3(config-vlan)# name STUDENTS
@@ -129,7 +128,7 @@ S3# show vlan brief
 
 # Trunk Configuration Example
 
-```
+```csharp
 S2# configure terminal
 S2(config)# vlan 10
 S2(config-vlan)# name Faculty
@@ -194,7 +193,7 @@ S2(config-if)# do show interfaces f0/1 switchport
   - VTP version 1: Default mode. Supports normal range VLANs only
   - VTP version 2: Supports advanced features.
 
-```
+```csharp
 S1# show vtp status
 ```
 
@@ -219,7 +218,7 @@ S1# show vtp status
 
 # VTP Configuration
 
-```
+```csharp
 S1(config)# vtp mode server
 S1(config)# vtp domain CCNA
 S1(config)# vtp password cisco12345
@@ -230,7 +229,7 @@ S1(config-vlan)# name MARKETING
 S1(config-vlan)# vlan 30
 S1(config-vlan)# name ACCOUNTING
 ```
-```
+```csharp
 S2(config)# vtp mode client
 S2(config)# vtp domain CCNA
 S2(config)# vtp password cisco12345
