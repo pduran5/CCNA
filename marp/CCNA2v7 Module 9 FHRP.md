@@ -38,10 +38,10 @@ First hop redundancy protocols (FHRPs) are mechanisms that **provide alternate d
 
 # FHRP Options
 - **Hot Standby Router Protocol (HSRP)**: Cisco-propietary IPv4 or IPv6 devices.
-  - Hello packets: 3 seconds
+  - 👋🏻 Hello packets: 3 seconds
   - The standby router will become active if it does not receive a hello message from the active router after 10 seconds.
 - **Virtual Router Redundancy Protocol version 2 (VRRPv2)**: non-propiertary IPv4
-- **VRRPv3**: non-propiertary IPv4 and IPv6. More scalable than VRRPv2
+- **VRRPv3**: non-propietary IPv4 and IPv6. More scalable than VRRPv2
 - **Gateway Load Balancing Protocol (GLBP)**: Cisco-propietary. IPv4 and IPv6. Adds load balancing.
 
 ---
@@ -60,7 +60,7 @@ First hop redundancy protocols (FHRPs) are mechanisms that **provide alternate d
 
 ![bg right:38% 100%](img/hsrp.jpg)
 
-```
+```csharp
 R1(config)# interface g0/1
 R1(config-if)# ip address 172.16.10.2 255.255.255.0 
 R1(config-if)# standby 1 ip 172.16.10.1
@@ -82,7 +82,7 @@ R2(config-if)# standby 1 timers 5 15
 For each VLAN:
 ![bg right:38% 100%](img/hsrpcampus.png)
 
-```
+```csharp
 R1(config)# interface vlan 10
 R1(config-if)# ip address 172.16.10.2 255.255.255.0 
 R1(config-if)# standby 1 ip 172.16.10.1
