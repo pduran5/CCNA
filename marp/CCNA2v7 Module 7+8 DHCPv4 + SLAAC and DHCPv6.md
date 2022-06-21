@@ -35,12 +35,12 @@ h1 {
 
 
 ## Disable the Cisco IOS DHCPv4 Server
-```
+```csharp
 R1(config)# no service dhcp
 ```
 
 ## Configure Cisco Router as a DHCPv4 Client
-```
+```csharp
 SOHO(config)# interface G0/0/1
 SOHO(config-if)# ip address dhcp
 ```
@@ -48,21 +48,21 @@ SOHO(config-if)# ip address dhcp
 ---
 
 # Steps to Obtain a Lease
-1️⃣ DHCPDISCOVER: Broadcast
-2️⃣ DHCPOFFER: Unicast
-3️⃣ DHCPREQUEST: Broadcast
-4️⃣ DHCPACK: Unicast
+1️⃣ **DHCPDISCOVER:** Broadcast 👨‍👩‍👧‍👧
+2️⃣ **DHCPOFFER:** Unicast 🥷🏻
+3️⃣ **DHCPREQUEST:** Broadcast 👨‍👩‍👧‍👧
+4️⃣ **DHCPACK:** Unicast 🥷🏻
 
 # Steps to Renew a Lease
-1️⃣ DHCPREQUEST: Unicast
-2️⃣ DHCPACK: Unicast
+1️⃣ **DHCPREQUEST:** Unicast 🥷🏻
+2️⃣ **DHCPACK:** Unicast 🥷🏻
 
 ---
 
 # Configure a Cisco IOS DHCPv4 Server
 ![center w:550](img/dhcpv4.png)
 
-```
+```csharp
 R1(config)# ip dhcp excluded-address 192.168.10.1 192.168.10.9
 R1(config)# ip dhcp excluded-address 192.168.10.254
 R1(config)# ip dhcp pool LAN-POOL-1
@@ -81,7 +81,7 @@ R1# show ip dhcp server statistics
 
 ![center w:600](img/dhcpv4relay.png)
 
-```
+```csharp
 R1(config)# interface g0/0/0
 R1(config-if)# ip helper-address 192.168.11.6
 ```
@@ -99,16 +99,16 @@ R1(config-if)# ip helper-address 192.168.11.6
 
 # IPv6 GUA Assignment - 3 RA Message Flags
 - **A flag (A: 1️⃣, O: 0️⃣, M: 0️⃣)**: Autoconfiguration. **SLAAC Only**
-```
+```csharp
 R1(config)# ipv6 unicast-routing
 ```
 - **O flag (A: 1️⃣, O: 1️⃣, M: 0️⃣)**: Other configuration. **SLAAC with DHCPv6 Server (Stateless DHCPv6)**
-```
+```csharp
 R1(config)# ipv6 nd other-config-flag
 ```
 - **M flag (A: 0️⃣, O: 0️⃣, M: 1️⃣)**: Managed address configuration. **DHCPv6 Server (Stateful DHCPv6)**
 
-```
+```csharp
 R1(config)# int g0/0/1
 R1(config-if)# ipv6 nd managed-config-flag
 R1(config-if)# ipv6 nd prefix default no-autoconfig
@@ -119,7 +119,7 @@ R1(config-if)# ipv6 nd prefix default no-autoconfig
 
 ![center w:500](img/statelessdhcpv6.png)
 
-```
+```csharp
 R1(config)# ipv6 unicast-routing
 R1(config)# ipv6 dhcp pool IPV6-STATELESS
 R1(config-dhcpv6)# dns-server 2001:db8:acad:1::254
@@ -138,7 +138,7 @@ R1(config-if)# no shut
 # <!--fit-->Configure a Stateless DHCPv6 Client (A: 1️⃣, O: 1️⃣, M: 0️⃣)
 ![center w:500](img/statelessdhcpv6client.png)
 
-```
+```csharp
 R1(config)# ipv6 unicast-routing
 R3(config)# interface g0/0/1
 R3(config-if)# ipv6 enable
@@ -153,7 +153,7 @@ R3# show ipv6 dhcp interface g0/0/1
 # <!--fit-->Configure a Stateful DHCPv6 Server (A: 0️⃣, O: 0️⃣, M: 1️⃣)
 ![center w:400](img/statefuldhcpv6.png)
 
-```
+```csharp
 R1(config)# ipv6 unicast-routing
 R1(config)# ipv6 dhcp pool IPV6-STATEFUL
 R1(config-dhcpv6)# address prefix 2001:db8:acad:1::/64
@@ -175,7 +175,7 @@ R1(config-if)# no shut
 
 ![center w:500](img/statefuldhcpv6client.png)
 
-```
+```csharp
 R3(config)# ipv6 unicast-routing
 R3(config)# interface g0/0/1
 R3(config-if)# ipv6 enable
@@ -194,7 +194,7 @@ R1# show ipv6 dhcp binding
 
 ![center w:700](img/dhcpv6relayagent.png)
 
-```
+```csharp
 R1(config)# interface gigabitethernet 0/0/1
 R1(config-if)# ipv6 dhcp relay destination 2001:db8:acad:1::2 G0/0/0
 R1(config-if)# exit
