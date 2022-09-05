@@ -46,7 +46,7 @@ symbols_path = C:\Users\alumne\GNS3\symbols
 configs_path = C:\Users\alumne\GNS3\configs
 ```
 
-2️⃣ Download and import .ova from `GNS3.VM.VirtualBox.2.2.32.zip` https://github.com/GNS3/gns3-gui/releases/tag/v2.2.32
+2️⃣ Download and import .ova from `GNS3.VM.VirtualBox.2.2.21.zip` https://github.com/GNS3/gns3-gui/releases/tag/v2.2.21
 
 
 3️⃣ In GNS3 VM, add a **3rd Bridged network card**. Check **Promiscous mode: Allow all**.
@@ -78,11 +78,11 @@ network:
 
 # Install GNS3 at home
 
-1️⃣ Download `GNS3-2.2.32-all-in-one.exe` from https://github.com/GNS3/gns3-gui/releases/tag/v2.2.32
+1️⃣ Download `GNS3-2.2.32-all-in-one.exe` from https://github.com/GNS3/gns3-gui/releases/tag/v2.2.21
 
 2️⃣ Install selecting VirtualBox.
 
-3️⃣ Download and import .ova from `GNS3.VM.VirtualBox.2.2.32.zip`
+3️⃣ Download and import .ova from `GNS3.VM.VirtualBox.2.2.21.zip`
 
 
 
