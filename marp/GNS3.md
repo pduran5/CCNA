@@ -54,28 +54,6 @@ configs_path = C:\Users\alumne\GNS3\configs
 
 ---
 
-# Classroom GNS3 final configuration
-
-4️⃣ Run GNS3 VM, select OK ➡️ Network ➡️ Yes
-
-5️⃣ Modify netplan to assign a static IP (one classroom IP assigned for each student):
-
-```
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    eth2:
-      addresses: [STUDENT_ASSIGNED_IP/24]
-      gateway4: CLASSROOM_GATEWAY_IP
-      nameservers:
-        addresses: [8.8.8.8, 8.8.4.4]
-```
-
-6️⃣ Save and exit.
-
----
-
 # Install GNS3 at home
 
 1️⃣ Download `GNS3-2.2.32-all-in-one.exe` from https://github.com/GNS3/gns3-gui/releases/tag/v2.2.21
