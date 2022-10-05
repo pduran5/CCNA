@@ -40,7 +40,7 @@ Physical Layer Standards address 3 functional areas:
 
 # Bandwidth
 
-- **Bandwidth:** capacity at which a medium can carry data. Bits per second (bps), Mbps (Megabits per second), Gbps (Gigabits per second). 1Gbps = 10^6 bps
+- **Bandwidth:** capacity at which a medium can carry data. Bits per second (bps), Mbps (Megabits per second), Gbps (Gigabits per second). 1Gbps = 10^9 bps
 - **Terminology**
   - ⌛ **Latency:** Amount of time, including delays, for data to travel from one given point to another
   - 🌪️ **Throughput:** The measure of the transfer of bits across the media over a given period of time
