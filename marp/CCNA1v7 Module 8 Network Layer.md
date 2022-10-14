@@ -36,7 +36,7 @@ h1 {
   - 📥 **Encapsulation**
   - 🚗 **Routing**
   - 📤 **De-encapsulation**
-- 🤔 **The IP addressing does not change from source to destination.**
+- :warning: **The IP addressing does not change from source to destination.**
 
 ---
 
@@ -87,9 +87,9 @@ Layer 3 splits the IPv4 into smaller units (Fragmentation, **MTU**: Maximum Tran
 
 - Each host devices creates their own routing table.
 - A host can send packets to:
-  - **Itself**: 127.0.0.1 (IPv4), ::1 (IPv6)
-  - **Local hosts**: destination on the same LAN. Traffic handled by intermediary device.
-  - **Remote hosts**: devices are not on the same LAN. Traffic forwarded directly to LAN default gateway.
+  - 🏠 **Itself**: 127.0.0.1 (IPv4), ::1 (IPv6)
+  - 🏘️ **Local hosts**: destination on the same LAN. Traffic handled by intermediary device.
+  - 🏙 **Remote hosts**: devices are not on the same LAN. Traffic forwarded directly to LAN default gateway.
 - The source device determines whether the destination is local or remote:
   - **IPv4:** Source IP address and network mask <> Destination IP address
   - **IPv6:** Source uses the network address and prefix advertised by local router
@@ -99,23 +99,23 @@ Layer 3 splits the IPv4 into smaller units (Fragmentation, **MTU**: Maximum Tran
 # Default Gateway
 
 **A Router or Layer 3 Switch can be a default gateway.**
-- It must have an IP address in the same range as the rest of the LAN.
+- :warning: It must have an IP address in the same range as the rest of the LAN.
 - It can route to other networks.
 
 **A default gateway is static route which will be a last resort route in the routing table.**
 **All device on the LAN will need the default gateway of the router if they intend to send traffic remotely. If a device has no default gateway or a bad default gateway, its traffic will not be able to leave the LAN.**
 
-Host will know the default gateway:
-- IPv4: statically or through DHCP
-- IPv6: through RS (Router Solicitation) or manually
+🤔 Host will know the default gateway:
+- IPv4 ➡️ statically or through DHCP
+- IPv6 ➡️ through RS (Router Solicitation) or manually
 
 ---
 
 # Host Routing Tables
 
 Display the PC routing table:
-- Windows: ```route print``` or ```netstat -r```
-- Linux: ```ip route```
+- 🪟 Windows ➡️ ```route print``` or ```netstat -r```
+- 🐧 Linux ➡️ ```ip route```
 
 ![w:600px center](img/hostroutingtable.png)
 
@@ -125,7 +125,7 @@ Display the PC routing table:
 
 # Router Packet Forwarding Decision
 
-What happens when the router receives the frame from the host device?
+🤔 What happens when the router receives the frame from the host device?
 
 ![center](img/routerpacketdecision.png)
 
