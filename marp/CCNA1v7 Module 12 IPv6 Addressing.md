@@ -97,9 +97,9 @@ h1 {
 
 - **Currently Range:** `2000::/3` <--> `3fff::/3`
 - **Global Routing Prefix** (48bits):  **Network portion.** Assigned by provider.
-- **Subnet ID** (16bits): **Subnet.** To identy subnets within its site.
+- **Subnet ID** (16bits): **Subnet.** To identify subnets within its site.
 - **Interface ID** (64bits): **Host portion.**
-- **Static GUA on a Router:** `ipv6 address 2001:db8:acada:1::1/64`
+- **Static GUA on a Router:** `ipv6 address 2001:db8:acad:1::1/64`
 
 ![h:250 center](img/ipv6gua.png)
 
