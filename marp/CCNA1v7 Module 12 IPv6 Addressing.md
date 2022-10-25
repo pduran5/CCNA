@@ -175,7 +175,7 @@ h1 {
 Used by Linux and CISCO devices
 1️⃣ Split Ethernet MAC address of the client (48bits): OUI ↔️ Serial Number
 2️⃣ Insert `ff:fe` into the middle (64bits)
-3️⃣ Reverse from binary 0 to 1 the 7th bit
+3️⃣ Flip 7th bit (0➡️1, 1➡️0)
 > **Example:** MAC: `fc:99:47:75:ce:e0`
 > EUI-64 Interface ID: `fe:99:47:ff:fe:75:ce:e0`
 
