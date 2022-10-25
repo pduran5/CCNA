@@ -31,12 +31,12 @@ h1 {
 # MAC and IP. Destination on Same Network
 
 There are 2 primary addresses assigned to a device on an Ethernet LAN:
-- **Layer 2 physical address (the MAC address):** Used for NIC to NIC communications on the same Ethernet network.
-- **Layer 3 logical address (the IP address):** Used to send the packet from the source device to the destination device. 
+- 💪🏼 **Layer 2 physical address (the MAC address):** Used for NIC to NIC communications on the same Ethernet network.
+- 🤖 **Layer 3 logical address (the IP address):** Used to send the packet from the source device to the destination device. 
 
 ## Same network
- - Layer 2 addresses are used to deliver frames from one NIC to another NIC on the same network.
-- If a destination IP address is on the same network, the destination MAC address will be that of the destination device.
+ - Layer 2 addresses are used to deliver frames from one NIC to another NIC.
+ - If a destination IP address is on the same network, the destination MAC address will be that of the destination device.
 
 ---
 
@@ -44,13 +44,13 @@ There are 2 primary addresses assigned to a device on an Ethernet LAN:
 
 - When the destination IP address is on a remote network, **the destination MAC address is that of the default gateway**.
 
-**ARP (IPv4) or ICMPv6 (IPv6) is used to associate the IP address of a device with the MAC address of the device NIC.**
+:warning: **ARP (IPv4) or ICMPv6 (IPv6) is used to associate the IP address of a device with the MAC address of the device NIC.**
 
 A device uses ARP to determine the destination MAC address of a local device when it knows its IPv4 address.
 
-ARP provides 2 basic functions:
-- Resolving IPv4 addresses to MAC addresses
-- Maintaining an ARP table of IPv4 to MAC address mappings
+**ARP provides 2 basic functions:**
+  - :one: Resolving IPv4 addresses to MAC addresses
+  - :two: Maintaining an ARP table of IPv4 to MAC address mappings
 
 <!-- _footer: 📝 9.1.4  -->
 
@@ -71,23 +71,23 @@ To send a frame, a device will search its **ARP table for a destination IPv4 add
 
 Entries in the ARP table are not permanent and **are removed when an ARP cache timer expires after a specified period of time**. The duration of the ARP cache timer differs depending on the operating system.
 
-- Windows:
-  - Show ARP Table: ```arp -a```
-  - Remove ARP Table: ```arp -d```
-- Linux:
-  - Show ARP Table: ```ip neigh```
-  - Remove ARP Table: ```sudo ip neigh flush all```
-- Cisco:
-  - Show ARP Table: ```show ip arp```
-  - Remove ARP Table: ```clear ip arp```
+- 🪟 Windows:
+  - Show ARP Table ➡️ ```arp -a```
+  - Remove ARP Table ➡️ ```arp -d```
+- 🐧 Linux:
+  - Show ARP Table ➡️ ```ip neigh```
+  - Remove ARP Table ➡️ ```sudo ip neigh flush all```
+- 🦜 Cisco:
+  - Show ARP Table ➡️ ```show ip arp```
+  - Remove ARP Table ➡️ ```clear ip arp```
 
 ---
 
-# ARP Issues – ARP Broadcasting and ARP Spoofing
+# <!--fit-->ARP Issues – ARP Broadcasting and ARP Spoofing
 
 ARP requests are received and processed **by every device on the local network.**
- - Excessive ARP broadcasts can cause some **reduction in performance**.
- - **ARP replies can be spoofed** by a threat actor to perform an ARP poisoning attack. Enterprise level switches include mitigation techniques to protect against ARP attacks (DAI: Dynamic ARP Inspection).
+ - ⛈️ Excessive ARP broadcasts can cause some **reduction in performance**.
+ - 🤡 **ARP replies can be spoofed** by a threat actor to perform an ARP poisoning attack. Enterprise level switches include mitigation techniques to protect against ARP attacks (DAI: Dynamic ARP Inspection).
 
 <!-- _footer: 📝 9.2.10 -->
 
