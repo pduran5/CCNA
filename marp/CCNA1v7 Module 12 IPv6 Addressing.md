@@ -114,7 +114,7 @@ h1 {
 - ⚠️ **Cannot be routed.**
 - Every IPv6-enabled network interface must have an LLA.
 - **If an LLA is not configured manually on an interface, the device will automatically create one.**
-- **Static LLA on a Router:** `ipv6 address fe80::1/64 link-local`
+- **Static LLA on a Router:** `ipv6 address fe80::1 link-local`
 
 <!-- _footer: 📝 12.3.8 -->
 
@@ -181,6 +181,7 @@ Used by Linux and CISCO devices
 
 ## Randomly Generated Interface ID
 Used by Windows. **Interface ID:** Random number
+Enable EUI-64:`netsh interface ipv6 set global randomizeidentifiers=disabled`
 
 :warning: Client may use DAD (Duplicate Address Detection) to ensure the uniqueness of the generated IPv6. No reply ➡️ unique.
 

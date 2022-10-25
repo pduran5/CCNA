@@ -5,11 +5,13 @@
 R1(config)#int e0/0
 R1(config-if)#ip add 172.16.1.1 255.255.255.0
 R1(config-if)#ipv6 add 2001:db8:acad:1::1/64
+R1(config-if)#ipv6 add fe80::1 link-local
 R1(config-if)#no sh
 
 R1(config-if)#int s2/0
 R1(config-if)#ip add 172.16.255.249 255.255.255.252
 R1(config-if)#ipv6 add 2001:db8:acad:ffff::249/64
+R1(config-if)#ipv6 add fe80::1 link-local
 R1(config-if)#no sh
 
 R1(config-if)#int e0/1
