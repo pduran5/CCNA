@@ -214,7 +214,7 @@ S1# show ip ssh
 S1# configure terminal
 S1(config)# ip ssh version 2
 S1(config)# ip domain-name cisco.com
-S1(config)# crypto key generate rsa modulus 1024
+S1(config)# crypto key generate rsa general-keys modulus 1024
 S1(config)# username admin secret ccna
 S1(config)# line vty 0 4
 S1(config-line)# transport input ssh
