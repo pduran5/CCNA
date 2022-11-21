@@ -93,3 +93,23 @@ S1# show etherchannel summary
 S1# show etherchannel port-channel
 S1# show interfaces etherchannel
 ```
+
+---
+
+# PAgP Configuration Example
+
+![center w:800](img/lacp.png)
+```csharp
+S1(config)# interface range f0/1-2
+S1(config-if-range)# channel-protocol pagp
+S1(config-if-range)# channel-group 1 mode desirable
+S1(config-if-range)# port-channel interface Port-channel 1
+S1(config-if-range)# interface port-channel 1
+S1(config-if)# switchport mode trunk
+S1(config-if)# switchport trunk allowed vlan 1,2,20
+S1(config-if)# end
+S1# show interfaces port-channel
+S1# show etherchannel summary
+S1# show etherchannel port-channel
+S1# show interfaces etherchannel
+```
