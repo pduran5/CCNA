@@ -69,7 +69,7 @@ R1(config)#enable password class
 apk update
 apk add busybox-extras openssh
 telnet 10.0.1.2
-ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-ctr -l admin 10.0.1.1
+ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 -oHostKeyAlgorithms=+ssh-rsa -c aes128-cbc -l admin 10.0.1.1
 ```
 
 # S1 - Show and clear MAC address table. Show port security
