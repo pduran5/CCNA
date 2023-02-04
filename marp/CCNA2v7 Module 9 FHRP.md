@@ -72,7 +72,8 @@ R1(config-if)# standby 1 timers 5 15
 R2(config)# interface g0/1
 R2(config-if)# ip address 172.16.10.3 255.255.255.0 
 R2(config-if)# standby 1 ip 172.16.10.1 
-R2(config-if)# standby 1 priority 100 
+R2(config-if)# standby 1 priority 100
+R2(config-if)# standby 1 preempt 
 R2(config-if)# standby 1 authentication cisco 
 R2(config-if)# standby 1 timers 5 15 
 ```
@@ -95,6 +96,7 @@ R2(config)# interface vlan 10
 R2(config-if)# ip address 172.16.10.3 255.255.255.0 
 R2(config-if)# standby 1 ip 172.16.10.1 
 R2(config-if)# standby 1 priority 100 
+R2(config-if)# standby 1 preempt 
 R2(config-if)# standby 1 authentication cisco 
 R2(config-if)# standby 1 timers 5 15 
 ```
