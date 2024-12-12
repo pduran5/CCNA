@@ -1,4 +1,5 @@
 # S1
+```
 !
 hostname S1
 !
@@ -16,8 +17,9 @@ interface Ethernet0/2
  switchport access vlan 127
  switchport mode access
 !
-
+```
 # S2
+```
 !
 hostname S2
 !
@@ -35,8 +37,10 @@ interface Ethernet0/2
  switchport access vlan 128
  switchport mode access
 !
-
+```
 # S3
+```
+!
 hostname S3
 !
 no ip cef
@@ -64,8 +68,9 @@ router rip
  version 2
  network 172.16.0.0
  network 192.168.127.0
-
+```
 # S4
+```
 !
 hostname S4
 !
@@ -95,10 +100,10 @@ router rip
  network 172.16.0.0
  network 192.168.128.0
 !
-
+```
 # R1
+```
 !
 hostname R1
 !
-
-
+```
